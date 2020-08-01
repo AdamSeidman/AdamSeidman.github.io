@@ -14,7 +14,7 @@ npm run build
 cd dist
 
 mkdir ../temp
-mv * ../temp
+cp * ../temp
 cp ../index.html ./index.html
 cp ../CNAME ./CNAME
 
