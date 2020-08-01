@@ -1,5 +1,0 @@
-const connect = require('connect')
-var server = connect()
-const serveStatic = require('serve-static')
-server.use(serveStatic(__dirname))
-server.listen(3000)
