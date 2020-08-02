@@ -39,9 +39,9 @@ h2 {
     -1px 1px 3px black,
     1px -1px 3px black,
     1px 1px 3px black;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'IndieFlower', 'Franklin Gothic Medium', Arial, sans-serif;
   padding-top: 1vh;
-  font-size: 7vh;
+  font-size: 7.75vh;
 }
 
 h1 {
@@ -51,7 +51,7 @@ h1 {
     -1px 1px 3px black,
     1px -1px 3px black,
     1px 1px 3px black;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding-top: 38vh;
   font-size: 13vh;
 }

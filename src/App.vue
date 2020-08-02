@@ -19,9 +19,9 @@ export default {
     NavBar
   }
 }
-</script>
+</script>VarelaRound-Regular
 
-<style lang="scss">
+<style>
 .invisible {
   opacity: 0.0;
 }
@@ -34,8 +34,17 @@ export default {
 body {
   margin: 0px;
 }
+</style>
 
-.pointable:hover {
-  cursor: pointer;
+<!-- Fonts -->
+<style>
+@font-face {
+    font-family: Varela;
+    src: url('./assets/VarelaRound-Regular.ttf');
+}
+
+@font-face {
+  font-family: IndieFlower;
+  src: url('./assets/IndieFlower-Regular.ttf');
 }
 </style>

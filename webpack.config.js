@@ -9,16 +9,6 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
-  /*optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-          warnings: false,
-        }
-      })
-    ]
-  },*/
   module: {
     rules: [
       {
@@ -105,26 +95,6 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    }),/*
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),*
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })*/
-  ])/*
-  module.exports.optimization = {
-    minimizer: []
-  }
-  module.exports.optimization.minimizer = (module.exports.optimization.minimizer || []).concat([
-    new UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false,
-      }
-    })
-  ])*/
+    }),
+  ])
 }
