@@ -51,7 +51,8 @@ module.exports = {
               'css-loader',
               'sass-loader?indentedSyntax'
             ]
-          }
+          },
+          hotReload: true
           // other vue-loader options go here
         }
       },
@@ -78,7 +79,11 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    clientLogLevel: 'info',
+    watchOptions: {
+        poll: true
+    }
   },
   performance: {
     hints: false
