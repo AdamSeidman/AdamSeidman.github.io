@@ -1,13 +1,24 @@
 var path = require('path')
 var webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: './dist/',
+    publicPath: '/dist/',
     filename: 'build.js'
   },
+  /*optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+          warnings: false,
+        }
+      })
+    ]
+  },*/
   module: {
     rules: [
       {
@@ -51,8 +62,7 @@ module.exports = {
               'css-loader',
               'sass-loader?indentedSyntax'
             ]
-          },
-          hotReload: true
+          }
           // other vue-loader options go here
         }
       },
@@ -79,11 +89,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true,
-    clientLogLevel: 'info',
-    watchOptions: {
-        poll: true
-    }
+    overlay: true
   },
   performance: {
     hints: false
@@ -99,15 +105,26 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    }),
+    }),/*
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
         warnings: false
       }
-    }),
+    }),*
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    })*/
+  ])/*
+  module.exports.optimization = {
+    minimizer: []
+  }
+  module.exports.optimization.minimizer = (module.exports.optimization.minimizer || []).concat([
+    new UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false,
+      }
     })
-  ])
+  ])*/
 }
