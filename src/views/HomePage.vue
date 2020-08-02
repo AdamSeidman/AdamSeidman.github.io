@@ -39,7 +39,7 @@ h2 {
     -1px 1px 3px black,
     1px -1px 3px black,
     1px 1px 3px black;
-  font-family: 'IndieFlower', 'Franklin Gothic Medium', Arial, sans-serif;
+  font-family: 'Indie Flower', 'Franklin Gothic Medium', Arial, sans-serif;
   padding-top: 1vh;
   font-size: 7.75vh;
 }

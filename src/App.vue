@@ -22,6 +22,8 @@ export default {
 </script>VarelaRound-Regular
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 .invisible {
   opacity: 0.0;
 }
@@ -33,18 +35,5 @@ export default {
 
 body {
   margin: 0px;
-}
-</style>
-
-<!-- Fonts -->
-<style>
-@font-face {
-    font-family: Varela;
-    src: url('./assets/VarelaRound-Regular.ttf');
-}
-
-@font-face {
-  font-family: IndieFlower;
-  src: url('./assets/IndieFlower-Regular.ttf');
 }
 </style>
