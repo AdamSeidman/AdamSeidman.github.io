@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
+    <media-bar></media-bar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import MediaBar from './components/MediaBar'
 import NavBar from './components/NavBar'
 
 export default {
@@ -13,6 +15,7 @@ export default {
   data () {
     return {}
   }, components: {
+    MediaBar,
     NavBar
   }
 }
@@ -30,5 +33,9 @@ export default {
 
 body {
   margin: 0px;
+}
+
+.pointable:hover {
+  cursor: pointer;
 }
 </style>
