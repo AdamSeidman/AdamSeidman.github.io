@@ -1,12 +1,10 @@
 <template>
-  <div class="navbar-container">
-      <nav class="nav">
-          <a class="nav-link">HOME</a>
-          <a class="nav-link">ABOUT</a>
-          <a class="nav-link">PROJECTS</a>
-          <a class="nav-link">RESUME</a>
-      </nav>
-  </div>
+    <div class="navbar-container">
+        <router-link to="/">HOME</router-link>
+        <router-link to="/about">ABOUT</router-link>
+        <router-link to="/projects">PROJECTS</router-link>
+        <router-link to="">RESUME</router-link>
+    </div>
 </template>
 
 <script>
@@ -23,7 +21,7 @@ div.navbar-container {
     margin-top: 2vh;
 }
 
-a.nav-link {
+a {
     text-decoration: none;
     color: #cccccc;
     margin-left: 1vw;
@@ -32,7 +30,7 @@ a.nav-link {
     transition: color 0.175s ease-in;
 }
 
-a.nav-link:hover {
+a:hover {
     color: white;
     cursor: pointer;
     transition: color 0.25s ease-out;

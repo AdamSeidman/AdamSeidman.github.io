@@ -10,16 +10,14 @@
 <script>
 export default {
     mounted () {
+      setTimeout(() => {
         let invisibleEls = document.getElementsByClassName('invisible')
         for (let i = 0; i < invisibleEls.length; i++) {
             setTimeout(() => {
                 invisibleEls[i].classList.add('appear')
-                setTimeout(() => {
-                    invisibleEls.classList.remove('invisible')
-                    invisibleEls.classList.remove('appear')
-                }, 5000)
             },  (100 + (i * 1250)))
         }
+      }, 2500)
     }
 }
 </script>
