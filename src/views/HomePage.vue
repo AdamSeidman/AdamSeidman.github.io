@@ -17,7 +17,7 @@ export default {
                 invisibleEls[i].classList.add('appear')
             },  (100 + (i * 1250)))
         }
-      }, 2500)
+      }, 1750)
     }
 }
 </script>

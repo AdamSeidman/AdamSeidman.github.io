@@ -12,12 +12,6 @@
 </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
 div.mediabar-container {
     position: absolute;

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
     <media-bar></media-bar>
     <router-view></router-view>
+    <nav-bar></nav-bar>
   </div>
 </template>
 
@@ -12,14 +12,12 @@ import NavBar from './components/NavBar'
 
 export default {
   name: 'app',
-  data () {
-    return {}
-  }, components: {
+  components: {
     MediaBar,
     NavBar
   }
 }
-</script>VarelaRound-Regular
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
@@ -37,3 +35,4 @@ body {
   margin: 0px;
 }
 </style>
+

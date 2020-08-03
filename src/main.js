@@ -19,10 +19,10 @@ library.add(faEnvelope)
 
 const router = new VueRouter({
     routes: [
-        { path: '/', component: HomePage },
-        { path: '/about', component: AboutMe },
-        { path: '/projects', component: MyProjects },
-        { path: '*', component: NotFound }
+      { path: '/', component: HomePage },
+      { path: '/about', component: AboutMe },
+      { path: '/projects', component: MyProjects },
+      { path: '*', component: NotFound }
     ]
 })
 

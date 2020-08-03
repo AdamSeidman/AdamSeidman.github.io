@@ -7,21 +7,16 @@
     </div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
-<style scoped>
+<style lang="scss">
 div.navbar-container {
     position: absolute;
     text-align: center;
     width: 100vw;
     margin-top: 2vh;
+    top: 0;
 }
 
-a {
+div.navbar-container a {
     text-decoration: none;
     color: #cccccc;
     margin-left: 1vw;
@@ -30,9 +25,15 @@ a {
     transition: color 0.175s ease-in;
 }
 
-a:hover {
-    color: white;
+div.navbar-container a:hover {
+    color: black;
     cursor: pointer;
     transition: color 0.25s ease-out;
+}
+
+div.home-container + div.navbar-container {
+    a:hover {
+        color: white;
+    }
 }
 </style>
