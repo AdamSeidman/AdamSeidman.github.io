@@ -5,12 +5,13 @@
         </div>
         <p><span>&nbsp;</span>Hi! I'm Adam. I'm currently a fourth year (of five) at the Rochester 
             Institute of Technology. At RIT, I study Computer Engineering, and I am on an accelerated 
-            track to get my bachelors and masters by the end of my fifth year. I also am 
+            track to get my bachelors and masters by the end of my fifth year. I have also 
             completed an immersion in public policy. I am heavily involved with our school's Baja 
-            SAE team. For the last two years, I have even served on the team's executive 
-            board. I have always loved everything about both engineering and math. I enjoy 
-            learning about these skills, getting to use creativity, and solving problems. When 
-            I am not at RIT, some of my favorite pastimes include camping, reading, and puzzles.
+            SAE team, where I design electrical projects for our vehicle. For the last two years, 
+            I have even served on the team's executive board. I have always loved everything about 
+            both engineering and math. I enjoy learning about these skills, getting to use creativity, 
+            and solving problems. When I am not at RIT, some of my favorite pastimes include camping, 
+            reading, and puzzles.
         </p>
     </div>
 </template>
@@ -31,7 +32,7 @@
 
 img {
     clip-path: circle(7.5vw at center);
-    margin-top: -4vh;
+    margin-top: -3vh;
     width: 20vw;
 }
 
@@ -44,7 +45,7 @@ p {
     width: 70vw;
     display: inline-block;
     font-size: 3.75vh;
-    margin-top: 10vh;
+    margin-top: 9vh;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 </style>
