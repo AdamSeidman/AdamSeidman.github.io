@@ -9,7 +9,12 @@
 
 <script>
 export default {
-    mounted () {
+  props: {
+    id: String
+  },
+  mounted () {
+    console.log(this.id)
+    if (this.id === undefined || this.id === '') {
       setTimeout(() => {
         let invisibleEls = document.getElementsByClassName('invisible')
         for (let i = 0; i < invisibleEls.length; i++) {
@@ -18,7 +23,10 @@ export default {
             },  (i * 1250))
         }
       }, 750)
+    } else {
+      this.$router.push({ path: `/${this.id}` })
     }
+  }
 }
 </script>
 
