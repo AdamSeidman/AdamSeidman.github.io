@@ -8,13 +8,13 @@
 </template>
 
 <script>
+const REDIRECT_PATHS = ['about', 'projects']
+
 export default {
-  props: {
-    id: String
-  },
   mounted () {
-    console.log(this.id)
-    if (this.id === undefined || this.id === '') {
+    if (this.$route.query.pathname === undefined || 
+      !REDIRECT_PATHS.includes(this.$route.query.pathname)) {
+
       setTimeout(() => {
         let invisibleEls = document.getElementsByClassName('invisible')
         for (let i = 0; i < invisibleEls.length; i++) {
@@ -24,7 +24,7 @@ export default {
         }
       }, 750)
     } else {
-      this.$router.push({ path: `/${this.id}` })
+      this.$router.push({ name: this.$route.query.pathname })
     }
   }
 }

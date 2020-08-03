@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adam Seidman</title>
-    <meta http-equiv="refresh" content="1; URL=https://seidman-ad.am/" />
     <style>
         h3 {
             position: absolute;
@@ -16,9 +15,11 @@
     <script>
         const REDIRECT_PATHS = ['about', 'projects']
         let url = window.location.href.toLowerCase()
-        url = url.slice(url.lastIndexOf('/')).trim()
+        url = url.slice(url.lastIndexOf('/') + 1).trim()
         if (REDIRECT_PATHS.includes(url)) {
-            window.location.replace(`https://seidman-ad.am/index${url}`)
+            window.location.replace(`https://seidman-ad.am/index?pathname=${url}`)
+        } else {
+            window.location.replace('https://seidman-ad.am/')
         }
     </script>
 </head>

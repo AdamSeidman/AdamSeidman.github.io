@@ -21,17 +21,30 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
+      name: 'home',
       path: '/',
       component: HomePage
     },
     {
-      path: '/index/:id',
-      component: HomePage,
-      props: true
+      name: 'index',
+      path: '/index',
+      component: HomePage
     },
-    { path: '/about', component: AboutMe },
-    { path: '/projects', component: MyProjects },
-    { path: '*', component: NotFound }
+    {
+      name: 'about',
+      path: '/about',
+      component: AboutMe
+    },
+    {
+      name: 'projects',
+      path: '/projects',
+      component: MyProjects
+    },
+    {
+      name: '404',
+      path: '*',
+      component: NotFound
+    }
   ]
 })
 
