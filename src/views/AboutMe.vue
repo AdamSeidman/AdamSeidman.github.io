@@ -1,9 +1,9 @@
 <template>
     <div class="about-container">
         <div class="image-container">
-            <img src="../assets/adam_seidman.jpg" />
+            <img src="../assets/adam_seidman.jpg" class="invisible" />
         </div>
-        <p><span>&nbsp;</span>Hi! I'm Adam. I'm currently in my fourth year (of five) at the Rochester 
+        <p class="invisible"><span>&nbsp;</span>Hi! I'm Adam. I'm currently in my fourth year (of five) at the Rochester 
             Institute of Technology. At RIT, I study Computer Engineering, and I am on an accelerated 
             track to get my bachelors and masters by the end of my fifth year. I have also 
             completed an immersion in public policy. I am heavily involved with our school's Baja 
@@ -15,6 +15,19 @@
         </p>
     </div>
 </template>
+
+<script>
+export default {
+    mounted () {
+        setTimeout(() => {
+            let els = document.getElementsByClassName('invisible')
+            for (let i = 0; i < els.length; i++) {
+                els[i].classList.add('appear')
+            }
+        }, 250)
+    }
+}
+</script>
 
 <style scoped>
 .about-container {
@@ -46,6 +59,10 @@ p {
     display: inline-block;
     font-size: 3.75vh;
     margin-top: 9vh;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.appear {
+    transition: opacity 1s;
 }
 </style>

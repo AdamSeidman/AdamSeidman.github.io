@@ -20,9 +20,9 @@ export default {
         for (let i = 0; i < invisibleEls.length; i++) {
             setTimeout(() => {
                 invisibleEls[i].classList.add('appear')
-            },  (i * 1250))
+            },  (i * 1200))
         }
-      }, 750)
+      }, 500)
     } else {
       this.$router.push({ name: this.$route.query.pathname })
     }
@@ -35,7 +35,7 @@ div.home-container {
     background-image: url('../assets/background.jpg');
     background-size: cover;
     height: 100vh;
-    text-align: center
+    text-align: center;
 }
 
 h1, h2 {
@@ -59,5 +59,9 @@ h1 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding-top: 38vh;
   font-size: 13vh;
+}
+
+.appear {
+  transition: opacity 2s;
 }
 </style>

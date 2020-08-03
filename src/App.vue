@@ -28,7 +28,6 @@ export default {
 
 .appear {
   opacity: 1.0 !important;
-  transition: opacity 2s;
 }
 
 body {
