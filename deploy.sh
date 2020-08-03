@@ -17,6 +17,7 @@ mkdir ../temp
 cp * ../temp
 cp ../index.html ./index.html
 cp ../CNAME ./CNAME
+cp ../src/404.html ./404.html
 
 mkdir dist
 mv ../temp/* dist
