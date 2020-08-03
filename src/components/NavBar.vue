@@ -18,7 +18,7 @@ div.navbar-container {
 
 div.navbar-container a {
     text-decoration: none;
-    color: #cccccc;
+    color: #5f5f5f;
     margin-left: 1vw;
     margin-right: 1vw;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -32,6 +32,10 @@ div.navbar-container a:hover {
 }
 
 div.home-container + div.navbar-container {
+    a {
+        color: #cccccc;
+    }
+
     a:hover {
         color: white;
     }
