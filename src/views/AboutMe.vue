@@ -3,7 +3,7 @@
         <div class="image-container">
             <img src="../assets/adam_seidman.jpg" />
         </div>
-        <p><span>&nbsp;</span>Hi! I'm Adam. I'm currently a fourth year (of five) at the Rochester 
+        <p><span>&nbsp;</span>Hi! I'm Adam. I'm currently in my fourth year (of five) at the Rochester 
             Institute of Technology. At RIT, I study Computer Engineering, and I am on an accelerated 
             track to get my bachelors and masters by the end of my fifth year. I have also 
             completed an immersion in public policy. I am heavily involved with our school's Baja 
