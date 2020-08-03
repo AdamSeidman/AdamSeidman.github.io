@@ -23,6 +23,7 @@ div.navbar-container a {
     margin-right: 1vw;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     transition: color 0.175s ease-in;
+    font-size: 1.75vh;
 }
 
 div.navbar-container a:hover {

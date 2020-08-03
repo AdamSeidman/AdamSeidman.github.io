@@ -15,9 +15,9 @@ export default {
         for (let i = 0; i < invisibleEls.length; i++) {
             setTimeout(() => {
                 invisibleEls[i].classList.add('appear')
-            },  (100 + (i * 1250)))
+            },  (i * 1250))
         }
-      }, 1750)
+      }, 750)
     }
 }
 </script>
@@ -30,25 +30,24 @@ div.home-container {
     text-align: center
 }
 
-h2 {
+h1, h2 {
   margin: auto;
   color: white;
   text-shadow: -1px -1px 3px black,
     -1px 1px 3px black,
     1px -1px 3px black,
     1px 1px 3px black;
+  cursor: default;
+}
+
+h2 {
+  
   font-family: 'Indie Flower', 'Franklin Gothic Medium', Arial, sans-serif;
   padding-top: 1vh;
   font-size: 7.75vh;
 }
 
 h1 {
-  margin: auto;
-  color: white;
-  text-shadow: -1px -1px 3px black,
-    -1px 1px 3px black,
-    1px -1px 3px black,
-    1px 1px 3px black;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding-top: 38vh;
   font-size: 13vh;
