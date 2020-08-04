@@ -24,7 +24,7 @@ const projects = [
     new Project('MR System Controller', '',
         'Every year, RIT Baja builds a new vehicle while trying to stay innovative. In the last few years, we have developed an electronic shock absorber system. I designed a custom PCB for this project.',
         [
-            'Arduino', 'KiCad', 'SolidWorks'
+            'Arduino', 'KiCad', 'Python', 'SolidWorks'
         ], 'adam_seidman.jpg', 2),
     new Project('Personal Website', '',
         'That\'s this website! I created this site in July/August 2020 in my free time between classes. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
