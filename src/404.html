@@ -15,7 +15,14 @@
     <script>
         const REDIRECT_PATHS = ['about', 'projects']
         let url = window.location.href.toLowerCase()
-        url = url.slice(url.lastIndexOf('/') + 1).trim()
+        url = url.slice(url.indexOf('.am') + 4).trim()
+        if (url.contains('/')) {
+            if (url.slice(0, url.indexOf('/')) === 'project') {
+                url = 'projects'
+            } else {
+                url = url.slice(0, url.indexOf('/'))
+            }
+        }
         if (REDIRECT_PATHS.includes(url)) {
             window.location.replace(`https://seidman-ad.am/index?pathname=${url}`)
         } else {
