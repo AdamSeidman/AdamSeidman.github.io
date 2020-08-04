@@ -16,7 +16,7 @@
         const REDIRECT_PATHS = ['about', 'projects']
         let url = window.location.href.toLowerCase()
         url = url.slice(url.indexOf('.am') + 4).trim()
-        if (url.contains('/')) {
+        if (url.includes('/')) {
             if (url.slice(0, url.indexOf('/')) === 'project') {
                 url = 'projects'
             } else {
