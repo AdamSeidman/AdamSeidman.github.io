@@ -27,7 +27,7 @@ const projects = [
             'Arduino', 'KiCad', 'SolidWorks'
         ], 'adam_seidman.jpg', 2),
     new Project('Personal Website', '',
-        'That\'s this website! I created this site in July/August 2020 in my free time between classes. I wanted to try using VueJS for it, and I am proud of the way it turned out.',
+        'That\'s this website! I created this site in July/August 2020 in my free time between classes. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
         [
             'Github-Pages', 'VS Code', 'VueJS'
         ], 'adam_seidman.jpg', 3),
@@ -37,7 +37,7 @@ const projects = [
             'IntelliJ', 'Java', 'Windows Server'
         ], 'adam_seidman.jpg', 4),
     new Project('RIT Baja Website', '',
-        'RIT Baja\'s old website had a very old look to it. I collaborated on this project with one other student, and we went for a simple, modern one page design.',
+        'RIT Baja\'s previous website had a very old look to it. I collaborated on this project with one other student, and we went for a simple, modern one-page design.',
         [
             'AOS', 'Bootstrap', 'Instagram API'
         ], 'adam_seidman.jpg', 5)
