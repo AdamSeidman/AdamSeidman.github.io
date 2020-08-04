@@ -1,5 +1,5 @@
 <template>
-    <div class="project-panel-container">
+    <div class="project-panel-container" @click="openProject">
         <div class="project-panel">
             <h3>{{ this.project.name }}</h3>
             <div class="lower-project-content">
@@ -40,6 +40,11 @@ export default {
                 ++i
             })
             return str
+        }
+    },
+    methods: {
+        openProject: function () {
+            this.$router.push(`/${this.project.route}`)
         }
     }
 }
