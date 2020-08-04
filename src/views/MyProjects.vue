@@ -3,23 +3,19 @@
     <h2 class="invisible">Projects I've Completed</h2>
     <h4 class="invisible">Click on any project to learn more!</h4>
     <div class="projects-panel invisible">
-      <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
-      <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
-      <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
-      <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
-      <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
-      <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
+      <project-panel v-for="project in this.projects" :key="`project_${project.id}`" :project="project"/>
     </div>
   </div>
 </template>
 
 <script>
 import ProjectPanel from '../components/ProjectPanel'
+import projects from '../project/project'
 
 export default {
   data () {
     return {
-      msg: 'The concept of this project may be funny, but the implementation of this project was no joke!'
+      projects: projects
     }
   },
   components: {

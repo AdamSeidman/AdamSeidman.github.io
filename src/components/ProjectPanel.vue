@@ -1,17 +1,18 @@
 <template>
     <div class="project-panel-container">
         <div class="project-panel">
-            <h3>{{ this.projectName }}</h3>
+            <h3>{{ this.project.name }}</h3>
             <div class="lower-project-content">
-                <img :src="require(`../assets/${this.imgName}`)" />
+                <img :src="require(`../assets/${this.project.imgName}`)" />
                 <div class="image-fill">&nbsp;</div>
                 <p>
                     <span class="begin-paragraph">&nbsp;</span>
-                    {{ this.projectText }}
+                    {{ this.project.content }}
                 </p>
                 <hr>
                 <p class="tech-used">
                     <span class="tech-used">Technologies Used:</span>
+                    {{ this.techString }}
                 </p>
             </div>
         </div>
@@ -21,9 +22,25 @@
 <script>
 export default {
     props: {
-        projectName: String,
-        imgName: String,
-        projectText: String
+        project: Object
+    },
+    computed: {
+        techString: function () {
+            if (this.project.technologies.length < 1) {
+                return ''
+            }
+            let str = ''
+            let i = 1
+            this.project.technologies.forEach(x => {
+                if (i === this.project.technologies.length) {
+                    str += x
+                } else {
+                    str += `${x}, `
+                }
+                ++i
+            })
+            return str
+        }
     }
 }
 </script>
@@ -72,7 +89,7 @@ img, .image-fill {
 hr {
     position: fixed;
     margin-left: 10.5vw;
-    margin-top: -9.5vh;
+    margin-top: -5.5vh;
     width: 14vw;
     background-color: lightgray;
     height: 2px;
@@ -93,11 +110,13 @@ p {
 }
 
 p.tech-used {
-    margin-top: 10vh;
+    margin-top: 14vh;
+    text-align: left;
 }
 
 span.tech-used {
     font-family: sans-serif;
+    font-size: 1.75vh;
 }
 
 span.begin-paragraph {
