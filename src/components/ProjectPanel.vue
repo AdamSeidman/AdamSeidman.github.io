@@ -3,7 +3,7 @@
         <div class="project-panel">
             <h3>{{ this.projectName }}</h3>
             <div class="lower-project-content">
-                <img :src="imageFile" />
+                <img :src="require(`../assets/${this.imgName}`)" />
                 <div class="image-fill">&nbsp;</div>
                 <p>
                     <span class="begin-paragraph">&nbsp;</span>
@@ -24,12 +24,6 @@ export default {
         projectName: String,
         imgName: String,
         projectText: String
-    },
-    computed: {
-        imageFile: function () {
-            const url = require(`@/assets/${this.imgName}`)
-            return url
-        }
     }
 }
 </script>

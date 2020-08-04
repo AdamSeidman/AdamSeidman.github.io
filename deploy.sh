@@ -28,6 +28,7 @@ git init
 git add -A
 git commit -m 'deploy'
 
+echo Deploying...
 git push -f git@github.com:AdamSeidman/AdamSeidman.github.io.git master
 
 cd -

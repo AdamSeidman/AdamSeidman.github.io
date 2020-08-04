@@ -1,8 +1,8 @@
 <template>
   <div class="project-container">
-    <h2>Projects I've Completed</h2>
-    <h4>Click on any project to learn more!</h4>
-    <div class="projects-panel">
+    <h2 class="invisible">Projects I've Completed</h2>
+    <h4 class="invisible">Click on any project to learn more!</h4>
+    <div class="projects-panel invisible">
       <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
       <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
       <project-panel :imgName="'adam_seidman.jpg'" :projectName="'TEST Project'" :projectText="this.msg" />
@@ -24,7 +24,15 @@ export default {
   },
   components: {
     ProjectPanel
-  }
+  },
+  mounted () {
+        setTimeout(() => {
+            let els = document.getElementsByClassName('invisible')
+            for (let i = 0; i < els.length; i++) {
+                els[i].classList.add('appear')
+            }
+        }, 250)
+    }
 }
 </script>
 
@@ -51,5 +59,9 @@ div.project-container {
   text-align: center;
   width: 100vw;
   margin-left: 0px;
+}
+
+.appear {
+    transition: opacity 0.5s;
 }
 </style>
