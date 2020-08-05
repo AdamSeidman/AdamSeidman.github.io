@@ -92,7 +92,7 @@ img, .image-fill {
 }
 
 hr {
-    position: fixed;
+    position: absolute;
     margin-left: 10.5vw;
     margin-top: -5.5vh;
     width: 14vw;
@@ -105,7 +105,7 @@ p {
     display: inline-block;
     text-align: justify;
     margin: 0px;
-    position: fixed;
+    position: absolute;
     margin-left: -11vw;
     margin-top: 1vh;
     width: 13vw;
