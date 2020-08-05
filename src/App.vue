@@ -32,6 +32,7 @@ export default {
 
 body {
   margin: 0px;
+  overflow-x: hidden;
 }
 </style>
 

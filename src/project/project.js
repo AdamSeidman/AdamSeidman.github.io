@@ -11,7 +11,7 @@ class Project {
 
 const projects = [
     new Project('Bluetooth Robot', '',
-        'fdsafdsafasd',
+        'A small robot that ran on a TI microcontroller that was given commands from a nearby tablet. This project was a collaboration with the Computer Engineering department at RIT.',
         [
             'Bluetooth', 'C++', 'Energia', 'Microcontrollers'
         ], 'adam_seidman.jpg', 0),
@@ -26,10 +26,10 @@ const projects = [
             'Discord.JS', 'NodeJS', 'ServeStatic', 'SQLite'
         ], 'dsf_logo.png', 2),
     new Project('Gear Math Applets', '',
-        'fdfsafds',
+        'This series of applets use several different equations and solving methods to help the gearbox sub-team on RIT Baja figure out different properties of gears they are designing.',
         [
             'Java', 'Matlab', 'Python'
-        ], 'adam_seidman.jpg', 3),
+        ], 'gear_pic.png', 3),
     new Project('MR System Controller', '',
         'Every year, RIT Baja builds a new vehicle while trying to stay innovative. In the last few years, we have developed an electronic shock absorber system. I designed a custom PCB for this project.',
         [
@@ -51,7 +51,7 @@ const projects = [
             'AOS', 'Bootstrap', 'Instagram API'
         ], 'baja_logo.png', 7),
     new Project('Web Checkers', '',
-        'fdsafsdafdsa', 
+        'Web Checkers was a semester long group project for the Introduction to Software Engineering class', 
         [
             'Gradle', 'Java', 'JavaScript'
         ], 'adam_seidman.jpg', 8)
