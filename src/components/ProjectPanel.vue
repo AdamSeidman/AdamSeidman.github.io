@@ -51,85 +51,163 @@ export default {
 }
 </script>
 
-<style scoped>
-h3 {
-    font-size: 3vh;
-    margin: 0px;
-    margin-top: 0.5vh;
-}
-.right-panel {
-    width: 14vw;
-    margin: 1vh 0px 0px 11vw;
-    display: inline-block;
-    position: absolute;
+<style scoped lang="scss">
+.landscape {
+    h3 {
+        font-size: 3vh;
+        margin: 0px;
+        margin-top: 0.5vh;
+    }
+    .right-panel {
+        width: 14vw;
+        margin: 1vh 0px 0px 11vw;
+        display: inline-block;
+        position: absolute;
+    }
+    
+    .project-panel {
+        width: 25vw;
+        height: 25vh;
+        border: outset;
+        background-color: #dde0dd;
+        text-align: center;
+    }
+    
+    .project-panel-container {
+        display: inline-block;
+        padding: 1.5vh 1.5vw 1.5vh 1.5vw;
+        transition: padding 0.25s ease-in-out;
+        vertical-align: top;
+    }
+    
+    .lower-project-content {
+        vertical-align: top;
+        text-align: left;
+        margin: 0px;
+        width: 25vw;
+        display: inline-block;
+    }
+    
+    .project-panel-container:hover {
+        cursor: pointer;
+        padding: 0.25vh 0.75vw 2.75vh 2.25vw;
+    }
+    
+    img {
+        width: 9vw;
+        height: 16.75vh;
+        margin: 1.5vh 0.1vw 0px 1vw;
+        position: absolute;
+    }
+    
+    hr {
+        width: 13.25vw;
+        margin-right: 0.8vw;
+        background-color: lightgray;
+        height: 2px;
+        position: absolute;
+        top: 10vh;
+    }
+    
+    p {
+        text-align: justify;
+        margin: 0px;
+        margin-right: 1vw;
+        display: inline-block;
+        font-size: calc(0.55vw + 0.33vh);
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        height: 12vh;
+    }
+    
+    span.tech-used {
+        font-family: sans-serif;
+        font-size: 1.75vh;
+    }
+    
+    p.tech-used {
+        text-align: left;
+    }
+    
+    span.begin-paragraph {
+        margin-left: 1vw;
+    }
 }
 
-.project-panel {
-    width: 25vw;
-    height: 25vh;
-    border: outset;
-    background-color: #dde0dd;
-    text-align: center;
-}
-
-.project-panel-container {
-    display: inline-block;
-    padding: 1.5vh 1.5vw 1.5vh 1.5vw;
-    transition: padding 0.25s ease-in-out;
-    vertical-align: top;
-}
-
-.lower-project-content {
-    vertical-align: top;
-    text-align: left;
-    margin: 0px;
-    width: 25vw;
-    display: inline-block;
-}
-
-.project-panel-container:hover {
-    cursor: pointer;
-    padding: 0.25vh 0.75vw 2.75vh 2.25vw;
-}
-
-img {
-    width: 9vw;
-    height: 16.75vh;
-    margin: 1.5vh 0.1vw 0px 1vw;
-    position: absolute;
-}
-
-hr {
-    width: 13.25vw;
-    margin-right: 0.8vw;
-    background-color: lightgray;
-    height: 2px;
-    position: absolute;
-    top: 10vh;
-}
-
-
-p {
-    text-align: justify;
-    margin: 0px;
-    margin-right: 1vw;
-    display: inline-block;
-    font-size: calc(0.55vw + 0.33vh);
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    height: 12vh;
-}
-
-span.tech-used {
-    font-family: sans-serif;
-    font-size: 1.75vh;
-}
-
-p.tech-used {
-    text-align: left;
-}
-
-span.begin-paragraph {
-    margin-left: 1vw;
+.portrait {
+    h3 {
+        font-size: 3vh;
+        margin: 0px;
+        margin-top: 0.5vh;
+    }
+    .right-panel {
+        width: 36vw;
+        margin: 1vh 0px 0px 28vw;
+        display: inline-block;
+        position: absolute;
+    }
+    
+    .project-panel {
+        width: 70vw;
+        height: 25vh;
+        border: outset;
+        background-color: #dde0dd;
+        text-align: center;
+    }
+    
+    .project-panel-container {
+        display: inline-block;
+        padding: 1.5vh 1.5vw 1.5vh 1.5vw;
+        transition: padding 0.25s ease-in-out;
+        vertical-align: top;
+    }
+    
+    .lower-project-content {
+        vertical-align: top;
+        text-align: left;
+        margin: 0px;
+        width: 65vw;
+        display: inline-block;
+    }
+    
+    img {
+        width: 25vw;
+        height: 14vh;
+        margin: 2vh 0.1vw 0px 1vw;
+        position: absolute;
+    }
+    
+    hr {
+        width: 30vw;
+        margin-right: 0.8vw;
+        background-color: lightgray;
+        height: 2px;
+        position: absolute;
+        top: 10.7vh;
+    }
+    
+    p {
+        text-align: justify;
+        margin: 0px;
+        margin-right: 1vw;
+        display: inline-block;
+        font-size: calc(0.8vw + 0.8vh);
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        height: 12vh;
+    }
+    
+    span.tech-used {
+        font-family: sans-serif;
+        font-size: 1.3vh;
+    }
+    
+    p.tech-used {
+        text-align: left;
+    }
+    
+    span.begin-paragraph {
+        margin-left: 1vw;
+    }
 }
 </style>

@@ -2,7 +2,9 @@
   <div class="home-container">
     <div>
         <h1><span class="invisible">Adam Seidman</span></h1>
-        <h2><span class="invisible">Developer.&nbsp;&nbsp;</span><span class="invisible">Engineer.&nbsp;&nbsp;</span><span class="invisible">Maker.</span></h2>
+        <h2><span class="invisible">Developer.&nbsp;&nbsp;</span>
+        <span class="invisible">Engineer.&nbsp;&nbsp;</span>
+        <span class="invisible">Maker.</span></h2>
     </div>
   </div>
 </template>
