@@ -3,17 +3,18 @@
         <div class="project-panel">
             <h3>{{ this.project.name }}</h3>
             <div class="lower-project-content">
-                <img :src="require(`../assets/${this.project.imgName}`)" />
-                <div class="image-fill">&nbsp;</div>
-                <p>
-                    <span class="begin-paragraph">&nbsp;</span>
-                    {{ this.project.content }}
-                </p>
-                <hr>
-                <p class="tech-used">
-                    <span class="tech-used">Technologies Used:</span>
-                    {{ this.techString }}
-                </p>
+                <img :src="require(`../assets/${this.project.imgName}`)" class="inline" />
+                <div class="right-panel inline">
+                    <p class="project-content">
+                        <span class="begin-paragraph">&nbsp;</span>
+                        {{ this.project.content }}
+                    </p>
+                    <hr>
+                    <p class="tech-used">
+                        <span class="tech-used">Technologies Used:</span>
+                        {{ this.techString }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -53,8 +54,14 @@ export default {
 <style scoped>
 h3 {
     font-size: 3vh;
+    margin: 0px;
     margin-top: 0.5vh;
-    margin-bottom: 0.5vh;
+}
+.right-panel {
+    width: 14vw;
+    margin: 1vh 0px 0px 11vw;
+    display: inline-block;
+    position: absolute;
 }
 
 .project-panel {
@@ -75,6 +82,9 @@ h3 {
 .lower-project-content {
     vertical-align: top;
     text-align: left;
+    margin: 0px;
+    width: 25vw;
+    display: inline-block;
 }
 
 .project-panel-container:hover {
@@ -82,46 +92,41 @@ h3 {
     padding: 0.25vh 0.75vw 2.75vh 2.25vw;
 }
 
-img, .image-fill {
-    display: inline-block;
+img {
     width: 9vw;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    clip-path: fill-box;
-    margin-top: 1vh;
+    height: 16.75vh;
+    margin: 1.5vh 0.1vw 0px 1vw;
+    position: absolute;
 }
 
 hr {
-    position: absolute;
-    margin-left: 10.5vw;
-    margin-top: -5.5vh;
-    width: 14vw;
+    width: 13.25vw;
+    margin-right: 0.8vw;
     background-color: lightgray;
     height: 2px;
+    position: absolute;
+    top: 10vh;
 }
 
 
 p {
-    display: inline-block;
     text-align: justify;
     margin: 0px;
-    position: absolute;
-    margin-left: -11vw;
-    margin-top: 1vh;
-    width: 13vw;
-    font-size: 1.5vh;
+    margin-right: 1vw;
+    display: inline-block;
+    font-size: calc(0.55vw + 0.33vh);
     font-weight: bold;
     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-p.tech-used {
-    margin-top: 14vh;
-    text-align: left;
+    height: 12vh;
 }
 
 span.tech-used {
     font-family: sans-serif;
     font-size: 1.75vh;
+}
+
+p.tech-used {
+    text-align: left;
 }
 
 span.begin-paragraph {

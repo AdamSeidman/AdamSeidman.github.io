@@ -16,7 +16,7 @@ const projects = [
         'A small robot that ran on a TI microcontroller that was given commands from a nearby tablet. This project was a collaboration with the Computer Engineering department at RIT.',
         [
             'Bluetooth', 'C++', 'Energia', 'Microcontrollers'
-        ], 'adam_seidman.jpg'),
+        ], 'bluetooth.png'),
     new Project('Cloud 18 Website', '',
         'Cloud 18 is a band run by students located at the University of Albany. With input from the band, I designed the website. It is a simple site, but is moderately CSS-intensive.', 
         [
@@ -68,9 +68,9 @@ const projects = [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'adam_seidman.jpg'),
     new Project('Web Checkers', '',
-        'Web Checkers was a semester long group project for the Introduction to Software Engineering class', 
+        'Web Checkers was a semester long group project for the Introduction to Software Engineering class.', 
         [
-            'Gradle', 'Java', 'JavaScript'
+            'Java', 'JavaScript', 'Spark'
         ], 'adam_seidman.jpg')
 ]
 
