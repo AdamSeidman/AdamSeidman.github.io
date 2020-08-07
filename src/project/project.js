@@ -73,7 +73,7 @@ const projects = [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'shifter'),
     new Project('Web Checkers', '',
-        'Web Checkers was a semester long group project for the Introduction to Software Engineering class.', 
+        'Web Checkers was a semester long group project for the Intro to Software Engineering class.', 
         [
             'Java', 'JavaScript', 'Spark'
         ], 'checker-board')
