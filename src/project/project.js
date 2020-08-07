@@ -66,7 +66,7 @@ const projects = [
         'fsdfsdfds',
         [
             'Arduino', 'C++', 'Color Sensor'
-        ], ''),
+        ], 'line-follow'),
     new Project('Shifter Knob', '',
         'hgfdhgfdhgf',
         [
