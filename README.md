@@ -2,7 +2,7 @@
 
 > Adam Seidman- Personal Website in Vue
 
-## Build Setup
+## Build Setup  
 
 ``` bash
 # install dependencies
