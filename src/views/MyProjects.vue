@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 h2 {
   font-size: 6vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -49,15 +49,15 @@ h4 {
   margin-bottom: 3vh;
 }
 
-.appear {
-  transition: opacity 0.5s;
-}
-
 div.project-container {
   margin: 7vh;
   position: absolute;
   text-align: center;
   width: 100vw;
   margin-left: 0px;
+}
+
+.appear {
+    transition: opacity 0.5s;
 }
 </style>
