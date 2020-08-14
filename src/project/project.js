@@ -43,7 +43,7 @@ const projects = [
             'Image Processing', 'Java'
         ], ''),
     new Project('MR System Controller', '',
-        'Every year, RIT Baja builds a new vehicle while trying to stay innovative. In the last few years, we have developed an electronic shock absorber system. I designed a PCB and an enclosure for this project.',
+        'Every year, RIT Baja builds a new vehicle while trying to stay innovative. In the last few years, we have developed an electronic shock absorber system. I designed a custom PCB for this project.',
         [
             'Arduino', 'KiCad', 'Python', 'SolidWorks'
         ], 'shock-absorber'),
@@ -63,19 +63,19 @@ const projects = [
             'AOS', 'Bootstrap', 'Instagram API', 'JQuery'
         ], 'baja_logo'),
     new Project('Line Following Robot', '',
-        'This robot was the final project for my Introduction to Computer Engineering class. The robot had to navigate a maze and stop for any obstacles.',
+        'fsdfsdfds',
         [
-            'Arduino', 'C++', 'Sensors'
+            'Arduino', 'C++', 'Color Sensor'
         ], 'line-follow'),
     new Project('Shifter Knob', '',
-        'After my old shifter started to deteriorate, I decided it was time to make a custom one. I 3D printed a prototype and drove around with it for a few days. I then used several resources to make the real thing.',
+        'hgfdhgfdhgf',
         [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'shifter'),
     new Project('Web Checkers', '',
         'Web Checkers was a semester long group project for the Intro to Software Engineering class.', 
         [
-            'Java', 'JavaScript', 'Maven', 'Spark'
+            'Java', 'JavaScript', 'Spark'
         ], 'checker-board')
 ]
 
