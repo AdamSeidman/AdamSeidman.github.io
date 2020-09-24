@@ -1,6 +1,6 @@
 # adamseidman.github.io
 
-> Adam Seidman- Personal Website in Vue
+> Adam Seidman- Personal Website in VueJS
 
 ## Build Setup  
 
