@@ -1,7 +1,7 @@
 <template>
   <div class="project-container">
     <h2 class="invisible">Projects I've Completed</h2>
-    <h4 class="invisible">Click on any project to learn more!</h4>
+    <!--h4 class="invisible">Click on any project to learn more!</h4-->
     <div class="projects-panel invisible">
       <project-panel v-for="project in this.projects" :key="`project_${project.id}`" :project="project"/>
     </div>
