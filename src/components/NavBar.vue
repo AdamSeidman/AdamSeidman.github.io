@@ -3,11 +3,15 @@
         <router-link to="/">HOME</router-link>
         <router-link to="/about">ABOUT</router-link>
         <router-link to="/projects">PROJECTS</router-link>
-        <router-link to="">RESUME</router-link>
+        <a href="./Adam_Seidman_Resume_2021.pdf" download>RESUME</a>
     </div>
 </template>
 
 <style lang="scss">
+a.resume {
+    margin: 0px !important;
+}
+
 div.navbar-container {
     position: absolute;
     text-align: center;
