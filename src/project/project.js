@@ -38,10 +38,10 @@ const projects = [
             'Java', 'Matlab', 'Python'
         ], 'gear_pic'),
     new Project('Grayscale Filter', '', 
-        'gfdgfdgfdsz',
+        'Created a Java program to perform high contrast pixel filtering to leave a black and white image of a logo or design/pattern.',
         [
             'Image Processing', 'Java'
-        ], ''),
+        ], 'grayscale'),
     new Project('Line Following Robot', '',
         'This robot was the final project for my Introduction to Computer Engineering class. The robot had to navigate a maze and stop for any obstacles.',
         [
@@ -56,7 +56,7 @@ const projects = [
         'That\'s this website! I created this site in July/August 2020 in my free time between classes. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
         [
             'Github-Pages', 'VS Code', 'VueJS'
-        ], ''),
+        ], 'vuejs'),
     new Project('Purchase Order System', '',
         'This is the oldest project listed here. I created this software my first year at RIT for my Baja teammates to use. The app took data on purchases that needed to be ordered and dealt with them.',
         [
