@@ -3,7 +3,7 @@
         <router-link to="/">HOME</router-link>
         <router-link to="/about">ABOUT</router-link>
         <router-link to="/projects">PROJECTS</router-link>
-        <a href="./Adam_Seidman_Resume_2021.pdf" download>RESUME</a>
+        <a href="https://github.com/AdamSeidman/AdamSeidman.github.io/raw/main/src/assets/Adam_Seidman_Resume_2021.pdf" download>RESUME</a>
     </div>
 </template>
 
