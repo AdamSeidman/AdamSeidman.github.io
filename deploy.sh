@@ -22,13 +22,13 @@ cp ../src/404.html ./404.html
 mkdir dist
 mv ../temp/* dist
 rm -rf ../temp
+cp ../favicon.ico ./dist/favicon.ico
 
 echo Deploying...
 git init
 git add -A
 git commit -m 'deploy'
 
-echo Deploying...
 git push -f git@github.com:AdamSeidman/AdamSeidman.github.io.git master
 
 cd -
