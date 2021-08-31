@@ -32,3 +32,6 @@ git commit -m 'deploy'
 git push -f git@github.com:AdamSeidman/AdamSeidman.github.io.git master
 
 cd -
+
+read -p "Press any key to continute..."
+echo ""
