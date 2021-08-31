@@ -24,14 +24,15 @@ mv ../temp/* dist
 rm -rf ../temp
 cp ../favicon.ico ./dist/favicon.ico
 
+access_token=`cat ../access_token.txt`
+repo=`echo https://$access_token@github.com/AdamSeidman/AdamSeidman.github.io.git`
+
 echo Deploying...
 git init
+git remote add origin $repo
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:AdamSeidman/AdamSeidman.github.io.git master
+git push -f $repo master
 
 cd -
-
-read -p "Press any key to continute..."
-echo ""
