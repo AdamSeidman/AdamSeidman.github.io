@@ -59,7 +59,7 @@ export default {
     computed: {
         mouseVerb() {
             if (helperFunctions.isMobile() || helperFunctions.isTablet()) {
-                return "Click on"
+                return "Tap on"
             }
             return "Hover over"
         }

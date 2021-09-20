@@ -77,11 +77,6 @@ img.proj-img {
     animation: fadeIn $fade-in-time;
 }
 
-#clickable {
-    cursor: pointer;
-    background: fuck;
-}
-
 div.panel {
   opacity: 0;
   background-color: $panel-background-color;
@@ -122,6 +117,10 @@ div.panel {
 }
 
 div.panel.main {
+  &#clickable {
+    cursor: pointer;
+  }
+
   &::before,
   &::after {
     content: '';
