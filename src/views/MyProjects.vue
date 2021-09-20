@@ -1,6 +1,7 @@
 <template>
     <div class="projects-content">
         <h2>Projects I've Completed</h2>
+        <h4>{{ this.mouseVerb }} any project to learn more!</h4>
         <div class="arrow" id="triangle-left"></div>
         <div class="scene">
             <div id="cube">
@@ -15,7 +16,8 @@
 
 <script>
 import ProjectPanel from '../components/ProjectPanel'
-import projects from '../project/project'
+import projects from '../js/project'
+import helperFunctions from '../js/helpers'
 
 var index = 0;
 var nodes = undefined;
@@ -52,6 +54,14 @@ export default {
             this.removeClasses();
             index = (index + length - 1) % length;
             this.assignClasses();
+        }
+    },
+    computed: {
+        mouseVerb() {
+            if (helperFunctions.isMobile() || helperFunctions.isTablet()) {
+                return "Click on"
+            }
+            return "Hover over"
         }
     },
     mounted () {
@@ -98,6 +108,17 @@ h2 {
   top: 12.5%;
   position: absolute;
   animation: fadeIn 2.5s;
+}
+
+h4 {
+  margin: 0px;
+  font-size: 3vh;
+  cursor: default;
+  font-family: 'Indie Flower', 'Franklin Gothic Medium', Arial, sans-serif;
+  margin-bottom: 3vh;
+  animation: fadeIn 2.5s;
+  position: absolute;
+  top: 20%;
 }
 
 .hide {
