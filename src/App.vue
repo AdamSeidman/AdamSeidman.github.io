@@ -48,8 +48,13 @@ export default {
 
 body {
   margin: 0px;
-  /*overflow-x: hidden;*/
+  overflow-x: hidden;
   background-color: whitesmoke;
+}
+
+@keyframes fadeIn {
+  0%, 30% { opacity: 0; }
+  100% { opacity: 1; animation-timing-function: ease-in; }
 }
 </style>
 

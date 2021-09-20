@@ -46,6 +46,7 @@ $lines-color:  white;
 $text-color: white;
 $line-positioning: 0.71rem;
 $title-font-size: 0.065em;
+$fade-in-time: 1.25s;
 
 .sub-panel {
     width: 77%;
@@ -63,6 +64,7 @@ img.proj-img {
     width: 95%;
     height: 95%;
     margin: 2.5%;
+    animation: fadeIn $fade-in-time;
 }
 
 div.panel {
@@ -122,7 +124,7 @@ div.panel.main {
   }
   
   &:hover {
-    background-color: #fff8;
+    background-color: #888888;
     
     img {
         opacity: 0.5;

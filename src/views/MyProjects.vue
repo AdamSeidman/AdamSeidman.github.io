@@ -1,11 +1,9 @@
 <template>
     <div class="projects-content">
+        <h2>Projects I've Completed</h2>
         <div class="arrow" id="triangle-left"></div>
         <div class="scene">
             <div id="cube">
-                <div class="panels">
-                    <div id="bkg" class="main hide"></div>
-                </div>
                 <div class="panels" id="panels">
                     <project-panel v-for="project in this.projects" :key="`project_${project.id}`" :project="project"/>
                 </div>
@@ -22,8 +20,6 @@ import projects from '../project/project'
 var index = 0;
 var nodes = undefined;
 var length = 0;
-var bkg = undefined;
-var timeout = undefined;
 
 export default {
     data () {
@@ -35,22 +31,10 @@ export default {
         ProjectPanel
     },
     methods: {
-        showBkg (time) {
-            timeout = setTimeout(function() {
-            bkg.className = "main";
-            timeout = undefined;
-            }, time);
-        },
         removeClasses () {
-            if (timeout !== undefined) {
-                clearTimeout(timeout);
-                timeout = undefined;
-            }
-            bkg.classList.add("hide");
             for (var i = 0; i < length; i++) {
                 nodes[i].className = "panel";
             }
-            this.showBkg(425);
         },
         assignClasses () {
             nodes[index].classList.add("main");
@@ -73,10 +57,8 @@ export default {
     mounted () {
         nodes = document.getElementById("panels").children;
         length = nodes.length;
-        bkg = document.getElementById("bkg");
 
         this.assignClasses();
-        this.showBkg(620);
 
         document.getElementById("triangle-left").onclick = this.decrement;
         document.getElementById("triangle-right").onclick = this.increment;
@@ -107,14 +89,15 @@ $arrow-color: #333;
     align-items: center;
 }
 
-#bkg {
-	position: absolute;
-    top: $cylinder-top;
-	height: $pic-width;
-	width: $pic-width;
-    background-color: black;
-    z-index: -1;
-    transition: all 0s;
+h2 {
+  font-size: 6vh;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0px;
+  margin-bottom: 1.5vh;
+  cursor: default;
+  top: 12.5%;
+  position: absolute;
+  animation: fadeIn 2.5s;
 }
 
 .hide {
@@ -191,51 +174,4 @@ $arrow-color: #333;
     }
 }
 
-
-@keyframes fadeIn {
-  0%, 35% { opacity: 0; }
-  100% { opacity: 1; animation-timing-function: ease-in; }
-}
 </style>
-
-<!--
-
-/* todo: remove */
-
-#squares {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuHmklWCsY6sTDgS1Gxv-pZ4aEaCOgtvgOzg&usqp=CAU");
-}
-
-#sun {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpBDv41cO_nVmh6S3TztOG50ZzhUDav3w1Q&usqp=CAU");
-}
-
-#windowP {
-  background-image: url("https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3F1YXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
-}
-
-#window {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4TDR6Rk5N83Khx-ZRzX5375ZzCx9ao0vcUQ&usqp=CAU");
-}
-
-#building {
-  background-image: url("https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3F1YXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80");
-}
-
-#math {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrwmJd22bivmlcFRyOnB-VIOk-gn8a4aAI4g&usqp=CAU");
-}
-
-#mister {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqwnCanQ7dgSfYKymyi1b0rx23l1YeoDacjw&usqp=CAU");
-}
-
-#smiley {
-  background-image: url("https://play-lh.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3");
-}
-
-#chips {
-  background-image: url("https://studiousguy.com/wp-content/uploads/2021/05/Craft-paper.jpg");
-}
-
--->
