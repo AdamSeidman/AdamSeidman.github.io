@@ -48,7 +48,8 @@ export default {
 
 body {
   margin: 0px;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
+  background-color: whitesmoke;
 }
 </style>
 

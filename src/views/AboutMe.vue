@@ -38,15 +38,20 @@ export default {
 }
 
 .image-container {
-    width: 80vh;
+    /*width: 80vh;*/
+    width: 100%;
     display: inline-block;
     margin-top: 10vh;
+
+    display: flex;
+    vertical-align: center;
+    justify-content: center;
 }
 
 img {
     clip-path: circle(7.5vw at center);
     margin-top: -3vh;
-    width: 20vw;
+    width: 20%;
 }
 
 span {
@@ -58,7 +63,7 @@ p {
     width: 70vw;
     display: inline-block;
     font-size: 3.75vh;
-    margin-top: 9vh;
+    margin-top: 4.5%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 

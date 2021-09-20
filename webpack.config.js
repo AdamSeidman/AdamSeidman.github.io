@@ -15,15 +15,15 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
-        ],
+          'css-loader',
+          'sass-loader'
+        ],        
       },
       {
         test: /\.scss$/,
         use: [
           'vue-style-loader',
-          'css-loader',
-          'sass-loader'
+          'css-loader'
         ],
       },
       {
@@ -52,7 +52,7 @@ module.exports = {
               'css-loader',
               'sass-loader?indentedSyntax'
             ]
-          }
+          },
           // other vue-loader options go here
         }
       },

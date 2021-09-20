@@ -1,23 +1,12 @@
 <template>
-    <div class="project-panel-container" @click="openProject">
-        <div class="project-panel">
-            <h3>{{ this.project.name }}</h3>
-            <div class="lower-project-content">
-                <img :src="require(`../assets/${this.project.imgName}`)" class="inline" />
-                <div class="right-panel inline">
-                    <p class="project-content">
-                        <span class="begin-paragraph">&nbsp;</span>
-                        {{ this.project.content }}
-                    </p>
-                    <hr>
-                    <p class="tech-used">
-                        <span class="tech-used">Technologies Used:</span>
-                        {{ this.techString }}
-                    </p>
-                </div>
-            </div>
+  <div class="panel">
+        <img class="proj-img" :src="require(`../assets/${this.project.imgName}`)"/>
+        <div class="sub-panel">
+            <span class="project-content">{{ this.project.content }}</span>
+            <span class="project-content">Technologies Used: {{ this.techString }}</span>
         </div>
-    </div>
+        <h3 class="panel-title">{{ this.project.name }}</h3>
+  </div>
 </template>
 
 <script>
@@ -51,85 +40,112 @@ export default {
 }
 </script>
 
-<style scoped>
-h3 {
-    font-size: 3vh;
-    margin: 0px;
-    margin-top: 0.5vh;
-}
-.right-panel {
-    width: 14vw;
-    margin: 1vh 0px 0px 11vw;
-    display: inline-block;
+<style lang="scss">
+$panel-background-color: lightgray;
+$lines-color:  white;
+$text-color: white;
+$line-positioning: 0.71rem;
+$title-font-size: 0.065em;
+
+.sub-panel {
+    width: 77%;
+    left: 11.5%;
+    height: 79%;
+    top: 21%;
     position: absolute;
+    border-top: 1px solid $lines-color;
+    opacity: 0;
+    transition: opacity ease-out 420ms;
 }
 
-.project-panel {
-    width: 25vw;
-    height: 25vh;
-    border: outset;
-    background-color: #dde0dd;
-    text-align: center;
-}
-
-.project-panel-container {
-    display: inline-block;
-    padding: 1.5vh 1.5vw 1.5vh 1.5vw;
-    transition: padding 0.25s ease-in-out;
-    vertical-align: top;
-}
-
-.lower-project-content {
-    vertical-align: top;
-    text-align: left;
-    margin: 0px;
-    width: 25vw;
-    display: inline-block;
-}
-
-.project-panel-container:hover {
-    cursor: pointer;
-    padding: 0.25vh 0.75vw 2.75vh 2.25vw;
-}
-
-img {
-    width: 9vw;
-    height: 16.75vh;
-    margin: 1.5vh 0.1vw 0px 1vw;
+img.proj-img {
     position: absolute;
+    width: 95%;
+    height: 95%;
+    margin: 2.5%;
 }
 
-hr {
-    width: 13.25vw;
-    margin-right: 0.8vw;
-    background-color: lightgray;
-    height: 2px;
+div.panel {
+  opacity: 0;
+  background-color: $panel-background-color;
+
+  &.main, &.left, &.right, &.moreLeft, &.moreRight {
+    opacity: 1;
+  }
+}
+
+.tech-used,
+.project-content,
+.panel-title {
+  opacity: 0;
+  height: 100%;
+  width: 100;
+  display: flex;
+  vertical-align: center;
+  justify-content: center;
+  font-size: $title-font-size;
+  color: $text-color;
+}
+
+.panel-title {
+    padding-top: 2%;
+}
+
+.project-content {
+    font-size: $title-font-size / 1.5;
+    margin-top: 4.7%;
+    height: auto;
+}
+
+div.panel.main {
+  &::before,
+  &::after {
+    content: '';
     position: absolute;
-    top: 10vh;
-}
+    top: $line-positioning;
+    bottom: $line-positioning;
+    left: $line-positioning;
+    right: $line-positioning;
+    opacity: 1;
+    transition: transform ease-out 420ms;
+  }
+      
+  &::before {
+    border-top: 2px solid $lines-color;
+    border-bottom: 2px solid $lines-color;
+    transform: scale(0, 1);
+  }
+  &::after {
+    border-left: 2px solid $lines-color;
+    border-right: 2px solid $lines-color;
+    transform: scale(1, 0);
+  }
+  
+  &:hover {
+    background-color: #fff8;
+    
+    img {
+        opacity: 0.5;
+        z-index: -1;
+    }
 
+    .sub-panel {
+        opacity: 1;
+    }
 
-p {
-    text-align: justify;
-    margin: 0px;
-    margin-right: 1vw;
-    display: inline-block;
-    font-size: calc(0.55vw + 0.33vh);
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    height: 12vh;
-}
-
-span.tech-used {
-    font-family: sans-serif;
-    font-size: 1.75vh;
-}
-
-p.tech-used {
-    text-align: left;
-}
-
-span.begin-paragraph {
-    margin-left: 1vw;
+    .project-content,
+    .panel-title {
+      opacity: 1;
+      text-shadow: 1px 1px #000a;
+      transition: all 420ms;
+    }
+    
+    &::before {
+      transform: scale(1.08, 1);
+    }
+    &::after {
+      transform: scale(1, 1.08);
+    }
+  }
 }
 </style>
