@@ -20,9 +20,9 @@ const projects = [
     new Project('MR System Controller', '',
         'Every year, RIT Baja builds a new vehicle while trying to stay innovative. In the last few years, we have developed an electronic shock absorber system. I designed a PCB and an enclosure for this project.',
         [
-            'Arduino', 'KiCad', 'Python', 'SolidWorks'
+            'Arduino', 'C', 'KiCad', 'Python', 'SolidWorks'
         ], 'shock-absorber'),
-    new Project('RIT Baja Website', '',
+    new Project('RIT Baja Website', 'https://www.rit.edu/clubs/baja/',
         'RIT Baja\'s previous website had a very old look to it. I collaborated on this project with one other student, and we went for a simple, modern one-page design.',
         [
             'AOS', 'Bootstrap', 'Instagram API', 'JQuery'
@@ -32,7 +32,7 @@ const projects = [
         [
             'Bluetooth', 'C++', 'Energia', 'Microcontrollers'
         ], 'bluetooth'),
-    new Project('DSF Bot', '',
+    new Project('DSF Bot', 'https://github.com/AdamSeidman/DSF-Discord-Bot',
         'DSF Bot is a Discord robot that has many commands to generate random, but obvious facts. The concept of this project may be funny, but the implementation is no joke!',
         [
             'Discord.JS', 'NodeJS', 'ServeStatic', 'SQLite'
@@ -52,7 +52,7 @@ const projects = [
         [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'shifter'),
-    new Project('Web Checkers', '',
+    new Project('Web Checkers', 'https://github.com/AdamSeidman/Checkers-App',
         'Web Checkers was a semester long group project for the Intro to Software Engineering class. It was required to connect to other players over the web to play a game of checkers.', 
         [
             'Java', 'JavaScript', 'Maven', 'Spark'
@@ -62,10 +62,10 @@ const projects = [
         [
             'IntelliJ', 'Java', 'Windows Server'
         ], 'money'),
-    new Project('Personal Website', '',
-        'That\'s this website! I created this site in July/August 2020 in my free time between classes. Recently, I have been working with 3D CSS to create the carousel you are looking at now. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
+    new Project('Personal Website', 'https://github.com/AdamSeidman/AdamSeidman.github.io',
+        'That\'s this website! I created this site in July/August 2020 in my free time between classes. Recently, I have been working with 3D CSS to create this projects carousel. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
         [
-            'Github-Pages', '3D CSS', 'VS Code', 'VueJS', 'Sass'
+            '3D CSS', 'Github-Pages', 'Sass', 'VS Code', 'VueJS'
         ], 'vuejs')
 ]
 

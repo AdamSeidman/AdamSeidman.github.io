@@ -56,5 +56,15 @@ body {
   0%, 30% { opacity: 0; }
   100% { opacity: 1; animation-timing-function: ease-in; }
 }
+
+@keyframes disappearQuickly {
+  0% { opacity: 1; }
+  15%, 100% { opacity: 0; }
+}
+
+@keyframes appearSlowly {
+  0%, 50% { opacity: 0; }
+  100% { opacity: 1; }
+}
 </style>
 

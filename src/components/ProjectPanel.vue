@@ -1,5 +1,5 @@
 <template>
-  <div class="panel">
+  <div class="panel" @click="openProject">
         <img class="proj-img" :src="require(`../assets/${this.project.imgName}`)"/>
         <div class="sub-panel">
             <span class="project-content">{{ this.project.content }}</span>
@@ -30,12 +30,22 @@ export default {
                 ++i
             })
             return str
+        },
+        routeNonEmpty: function () {
+            return this.project.route !== undefined && this.project.route.length > 0
         }
     },
     methods: {
         openProject: function () {
-            this.$router.push(`/${this.project.route}`)
+            if (this.routeNonEmpty) {
+                window.open(this.project.route, '_blank').focus()
+            }
         }
+    },
+    mounted() {
+      if (this.routeNonEmpty) {
+        this.$el.setAttribute("id", "clickable")
+      }
     }
 }
 </script>
@@ -67,13 +77,25 @@ img.proj-img {
     animation: fadeIn $fade-in-time;
 }
 
+#clickable {
+    cursor: pointer;
+    background: fuck;
+}
+
 div.panel {
   opacity: 0;
   background-color: $panel-background-color;
 
   &.main, &.left, &.right, &.moreLeft, &.moreRight {
     opacity: 1;
+    animation: appearSlowly 375ms;
   }
+
+  &:not(.main):not(.right):not(.left):not(.moreLeft):not(.moreRight) {
+    animation: disappearQuickly 500ms;
+    opacity: 0;
+  }
+
 }
 
 .tech-used,
