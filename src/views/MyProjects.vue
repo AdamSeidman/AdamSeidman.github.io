@@ -4,7 +4,7 @@
         <h4>{{ this.mouseVerb }} any project to learn more!</h4>
         <div class="arrow" id="triangle-left"></div>
         <div class="scene">
-            <div id="cube">
+            <div id="carousel">
                 <div class="panels" id="panels">
                     <project-panel v-for="project in this.projects" :key="`project_${project.id}`" :project="project"/>
                 </div>
@@ -134,7 +134,7 @@ h4 {
     position: fixed;
 }
 
-#cube {
+#carousel {
     position: relative;
     left: 50%;
     top: 50%;

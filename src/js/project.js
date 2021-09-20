@@ -63,7 +63,7 @@ const projects = [
             'IntelliJ', 'Java', 'Windows Server'
         ], 'money'),
     new Project('Personal Website', 'https://github.com/AdamSeidman/AdamSeidman.github.io',
-        'That\'s this website! I created this site in July/August 2020 in my free time between classes. Recently, I have been working with 3D CSS to create this projects carousel. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
+        'That\'s this website! I created this site in July/August 2020 in my free time between classes. Recently, I have been working with 3D CSS to create this project carousel. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
         [
             '3D CSS', 'Github-Pages', 'Sass', 'VS Code', 'VueJS'
         ], 'vuejs')
