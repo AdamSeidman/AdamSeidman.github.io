@@ -1,66 +1,72 @@
 <template>
-  <div class="home-container">
-    <div>
-        <h1><span class="invisible">Adam Seidman</span></h1>
-        <h2><span class="invisible">Developer.&nbsp;&nbsp;</span><span class="invisible">Engineer.&nbsp;&nbsp;</span><span class="invisible">Maker.</span></h2>
+    <div class="about-container">
+        <div class="image-container">
+            <img src="../assets/adam_seidman.jpg" class="invisible" />
+        </div>
+        <p class="invisible"><span>&nbsp;</span>Hi! I'm Adam. {{ this.aboutBlurb }}
+        </p>
     </div>
-  </div>
 </template>
 
 <script>
-const REDIRECT_PATHS = ['about', 'projects']
+import response from '../js/about'
 
 export default {
-  mounted () {
-    if (this.$route.query.pathname === undefined || 
-      !REDIRECT_PATHS.includes(this.$route.query.pathname)) {
-
-      setTimeout(() => {
-        let invisibleEls = document.getElementsByClassName('invisible')
-        for (let i = 0; i < invisibleEls.length; i++) {
-            setTimeout(() => {
-                invisibleEls[i].classList.add('appear')
-            },  (i * 1200))
+    mounted () {
+        setTimeout(() => {
+            let els = document.getElementsByClassName('invisible')
+            for (let i = 0; i < els.length; i++) {
+                els[i].classList.add('appear')
+            }
+        }, 250)
+    },
+    computed: {
+        aboutBlurb() {
+            return response.content;
         }
-      }, 500)
-    } else {
-      this.$router.push({ name: this.$route.query.pathname })
     }
-  }
 }
 </script>
 
 <style scoped>
-div.home-container {
-    background-image: url('../assets/background.jpg');
-    background-size: cover;
-    height: 100vh;
+.about-container {
     text-align: center;
+    width: 100vw;
+    position: absolute;
+    height: 1px;
 }
 
-h1, h2 {
-  margin: auto;
-  color: white;
-  text-shadow: -1px -1px 3px black,
-    -1px 1px 3px black,
-    1px -1px 3px black,
-    1px 1px 3px black;
-  cursor: default;
+.image-container {
+    /*width: 80vh;*/
+    width: 100%;
+    display: inline-block;
+    margin-top: 10vh;
+
+    display: flex;
+    vertical-align: center;
+    justify-content: center;
 }
 
-h2 {
-  font-family: 'Indie Flower', 'Franklin Gothic Medium', Arial, sans-serif;
-  padding-top: 1vh;
-  font-size: 7.75vh;
+img {
+    clip-path: circle(7.5vw at center);
+    margin-top: -3vh;
+    width: 20%;
 }
 
-h1 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  padding-top: 38vh;
-  font-size: 13vh;
+span {
+    margin-right: 3vw;
+}
+
+p {
+    text-align: justify;
+    width: 70vw;
+    display: inline-block;
+    font-size: 3.75vh;
+    margin-top: 4.5%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .appear {
-  transition: opacity 2s;
+    transition: opacity 1s;
 }
 </style>

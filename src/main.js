@@ -4,7 +4,6 @@ import App from './App.vue'
 import HomePage from './views/HomePage'
 import NotFound from './views/NotFound'
 import MyProjects from './views/MyProjects'
-import AboutMe from './views/AboutMe'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
@@ -29,11 +28,6 @@ const router = new VueRouter({
       name: 'index',
       path: '/index',
       component: HomePage
-    },
-    {
-      name: 'about',
-      path: '/about',
-      component: AboutMe
     },
     {
       name: 'projects',

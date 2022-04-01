@@ -45,12 +45,12 @@ export default {
             nodes[((length + index) - 1) % length].classList.add("left");
             nodes[((length + index) - 2) % length].classList.add("moreLeft");
         },
-        increment () {
+        decrement () {
             this.removeClasses();
             index = (index + 1) % length;
             this.assignClasses();
         },
-        decrement () {
+        increment () {
             this.removeClasses();
             index = (index + length - 1) % length;
             this.assignClasses();
