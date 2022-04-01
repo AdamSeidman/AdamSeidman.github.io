@@ -37,6 +37,11 @@ const projects = [
         [
             'Bluetooth', 'C++', 'Energia', 'Microcontrollers'
         ], 'bluetooth'),
+    new Project('Parallel Ray Tracer', '',
+        'The parallel ray tracer project was a half-semester long project for multiple processor systems. The program took variable numbers of processors and dynamically rendered an image using ray tracing.',
+        [
+            'Image Processing', 'MPI'
+        ], 'multi-cpu'),
     new Project('DSF Bot', 'https://github.com/AdamSeidman/DSF-Discord-Bot',
         'DSF Bot is a Discord robot that has many commands to generate random, but obvious facts. The concept of this project may be funny, but the implementation is no joke!',
         [
