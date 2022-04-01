@@ -36,4 +36,8 @@ div.mediabar-container {
     opacity: 1.0;
     transition: opacity 0.25s ease-out;
 }
+
+a {
+    z-index: 99;
+}
 </style>
