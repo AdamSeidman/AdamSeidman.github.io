@@ -58,7 +58,7 @@ const projects = [
             'EM Simulations', 'Soldering', 'SolidWorks'
         ], 'e-magnet'),
     new Project('Shifter Knob', '',
-        'After my old shifter started to deteriorate, I decided it was time to make a custom one. I 3D printed a prototype and drove around with it for a few days. I then used several resources to make the real thing.',
+        'After my old shifter started to deteriorate, I decided it was time to make a custom one. I 3D printed a prototype and drove around with it. I then used several resources to make the real thing.',
         [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'shifter'),
