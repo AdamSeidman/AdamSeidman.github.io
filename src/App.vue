@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <media-bar></media-bar>
+    <media-bar v-if="notGameRoute"></media-bar>
     <router-view></router-view>
-    <nav-bar></nav-bar>
+    <nav-bar v-if="notGameRoute"></nav-bar>
   </div>
 </template>
 
@@ -19,10 +19,16 @@ export default {
     NavBar
   },
   created () {
+    this.noteGameRoute
     window.addEventListener("resize", this.handleResize)
   },
   destroyed () {
     window.removeEventListener('resize', this.handleResize)
+  },
+  computed: {
+    notGameRoute () {
+      return this.$route.name !== "game" && this.$route.name !== "bajadle"
+    } 
   },
   methods: {
     handleResize () {
