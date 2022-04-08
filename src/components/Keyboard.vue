@@ -1,32 +1,9 @@
-<script setup lang="ts">
-//https://github.com/yyx990803/vue-wordle/blob/main/src/Keyboard.vue
-/*
-const enum LetterState {
-  INITIAL = 0,
-  CORRECT = 'correct',
-  PRESENT = 'present',
-  ABSENT = 'absent'
-}/*
-defineProps<{
-  letterStates: Record<string, LetterState>
-}>()
-defineEmits<{
-  (e: 'key', key: string): void
-}>()*/
-const rows = [
-  'qwertyuiop'.split(''),
-  'asdfghjkl'.split(''),
-  ['Enter', ...'zxcvbnm'.split(''), 'Backspace']
-]
-</script>
-
 <template>
   <div id="keyboard">
-    <div class="row" :v-for="(row, i) in rows">
-      <div class="spacer" v-if="i === 1"></div>
+    <div class="row" v-for="row in this.rows" :key="row[0]">
       <button
-        :v-for="key in row"
-        :class="[key.length > 1 && 'big', letterStates[key]]"
+        v-for="key in row"
+        :key="key" :class="[key.length > 1 && 'big', 'key']"
         @click="$emit('key', key)"
       >
         <span v-if="key !== 'Backspace'">{{ key }}</span>
@@ -43,10 +20,23 @@ const rows = [
           ></path>
         </svg>
       </button>
-      <div class="spacer" v-if="i === 1"></div>
     </div>
   </div>
 </template>
+
+<script setup>
+export default {
+    data () {
+        return {
+            rows: [
+              ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+              ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+              ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace']
+            ]
+        }
+    }
+}
+</script>
 
 <style scoped>
 #keyboard {

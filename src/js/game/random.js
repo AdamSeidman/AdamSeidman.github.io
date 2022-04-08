@@ -26,7 +26,7 @@ function SeedRandom(state1,state2){
 var getIndex = function (listSize) {
     var backlog = []
     var date = Math.floor((new Date().getTime() - new Date("04/07/2022").getTime()) / (1000 * 3600 * 24))
-    var generator = SeedRandom(date / listSize)
+    var generator = SeedRandom(Math.ceil(date / listSize))
     while (backlog.length <= (date % listSize) + 1) {
         var num = generator(listSize)
         while (backlog.includes(num)) {
