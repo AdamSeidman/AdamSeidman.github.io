@@ -6,7 +6,7 @@
           </div>
         </Transition>
         <header>
-            <h1>RIT BAJADLE</h1>
+            <h1>RIT BAJA-DLE</h1>
         </header>
         <div id="board">
             <div
@@ -97,7 +97,7 @@ export default {
             for (let i = 0; i < numGuesses; i++) {
                 this.board.push([])
                 for (let j = 0; j < wordLength; j++) {
-                    this.board[this.board.length - 1].push({letter: "A", state: "front"}) // todo: change
+                    this.board[this.board.length - 1].push({letter: "A", state: "filled"}) // todo: change
                 }
             }
         },
@@ -107,6 +107,51 @@ export default {
     }
 }
 </script>
+
+<style>
+body {
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  text-align: center;
+  max-width: 500px;
+  margin: 0px auto;
+}
+
+h1 {
+  margin: 4px 0;
+  font-size: 36px;
+}
+
+header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+#source-link {
+  position: absolute;
+  right: 1em;
+  top: 0.5em;
+}
+
+.correct,
+.present,
+.absent {
+  color: #fff !important;
+}
+
+.correct {
+  background-color: #6aaa64 !important;
+}
+
+.present {
+  background-color: #c9b458 !important;
+}
+
+.absent {
+  background-color: #787c7e !important;
+}
+
+</style>
 
 <style scoped>
 #board {
