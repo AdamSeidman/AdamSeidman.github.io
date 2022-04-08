@@ -9,3 +9,5 @@ var properties = {
         return 6
     }
 }
+
+export default properties;

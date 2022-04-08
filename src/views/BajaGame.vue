@@ -9,6 +9,33 @@
             <h1>RIT BAJADLE</h1>
         </header>
         <div id="board">
+            <div
+                v-for="(row, index) in board"
+                :key="`row ${index}`"
+                :class="[
+                    'row',
+                    shakeRowIndex === index && 'shake',
+                    success && currentRowIndex === index && 'jump'
+                ]"
+            >
+                <div
+                    v-for="(tile, subindex) in row"
+                    :key="`row ${index} tile ${subindex}`"
+                >
+                    <div class="front" :style="{ transitionDelay: `${index * 300}ms` }">
+                        {{ tile.letter }}
+                    </div>
+                    <div
+                        :class="['back', tile.state]"
+                        :style="{
+                            transitionDelay: `${index * 300}ms`,
+                            animationDelay: `${index * 100}ms`
+                        }"
+                    >
+                        {{ tile.letter }}
+                    </div>
+                </div>
+            </div>
         </div>
         <Keyboard @key="showMessage" />
     </div>
@@ -18,6 +45,8 @@
 import getWordList from '../js/game/words'
 import Keyboard from '../components/Keyboard'
 import random from '../js/game/random'
+import properties from '../js/game/game'
+import getValidWordList from '../js/game/valid-words'
 
 export default {
     components: {
@@ -26,14 +55,24 @@ export default {
     data () {
         return {
             msg: {message: "", showMessage: false, index: 0},
-            daily: true
+            daily: true,
+            shakeRowIndex: -1,
+            currentRowIndex: 0,
+            success: false,
+            board: []
         }
     },
     computed: {
         word() {
             let wordList = getWordList(this.daily)
             return wordList[random.getTodaysIndex(wordList.length)]
+        },
+        wordList() {
+          return getValidWordList(this.daily, this.word.length)
         }
+    },
+    created () {
+        this.setupBoard()
     },
     methods: {
         showMessage(msg, time) {
@@ -50,6 +89,20 @@ export default {
                     }
                 }, time);
             }
+        },
+        setupBoard() {
+            this.board = []
+            let wordLength = this.word.length
+            let numGuesses = properties.getNumGuesses(wordLength)
+            for (let i = 0; i < numGuesses; i++) {
+                this.board.push([])
+                for (let j = 0; j < wordLength; j++) {
+                    this.board[this.board.length - 1].push({letter: "A", state: "front"}) // todo: change
+                }
+            }
+        },
+        isValidWord(word) {
+          return this.wordList.includes(word)
         }
     }
 }
