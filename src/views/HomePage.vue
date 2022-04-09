@@ -11,8 +11,23 @@
 <script>
 import response from '../js/about'
 
+const REDIRECT_PATHS = ['about', 'projects', 'game', 'bajadle']
+
 export default {
     mounted () {
+        if (this.$route.query.pathname === undefined || 
+          !REDIRECT_PATHS.includes(this.$route.query.pathname)) {
+          setTimeout(() => {
+            let invisibleEls = document.getElementsByClassName('invisible')
+            for (let i = 0; i < invisibleEls.length; i++) {
+                setTimeout(() => {
+                    invisibleEls[i].classList.add('appear')
+                },  (i * 1200))
+            }
+          }, 500)
+        } else {
+          this.$router.push({ name: this.$route.query.pathname })
+        }
         setTimeout(() => {
             let els = document.getElementsByClassName('invisible')
             for (let i = 0; i < els.length; i++) {

@@ -23,14 +23,14 @@
                     :key="`row ${index} tile ${subindex}`"
                     :class="['tile', tile.letter.length > 0 && 'filled', tile.state.name !== 'initial' && 'revealed']"
                 >
-                    <div class="front" :style="{ transitionDelay: `${index * 300}ms` }">
+                    <div class="front" :style="{ transitionDelay: getDelayString(index, 3) }">
                         {{ tile.letter }}
                     </div>
                     <div
                         :class="['back', tile.state.name]"
                         :style="{
-                            transitionDelay: `${index * 300}ms`,
-                            animationDelay: `${index * 100}ms`
+                            transitionDelay: getDelayString(index, 3),
+                            animationDelay: getDelayString(index, 1)
                         }"
                     >
                         {{ tile.letter }}
@@ -87,6 +87,9 @@ export default {
         window.addEventListener('keyup', onKeyup)
     },
     methods: {
+        getDelayString(index, k) {
+          return `${index * 100 * k}ms`
+        },
         showMessage(msg, time) {
             if (time === void 0) { time = 1000; }
             this.msg.message = msg;
@@ -192,7 +195,7 @@ export default {
               let self = this
               setTimeout(() => {
                 self.allowInput = true
-              }, 1600)
+              }, 250)
             } else {
               this.showMessage("GAME OVER") // timeout? TODO
               // TODO game over
