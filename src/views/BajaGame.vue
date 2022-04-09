@@ -6,7 +6,7 @@
           </div>
         </Transition>
         <header>
-            <h1>RIT BAJA-DLE</h1>
+            <h1 class="game-header">RIT BAJA-DLE</h1>
         </header>
         <div id="board">
             <div
@@ -21,6 +21,7 @@
                 <div
                     v-for="(tile, subindex) in row"
                     :key="`row ${index} tile ${subindex}`"
+                    :class="['tile', tile.letter.length > 0 && 'filled', tile.state.name !== 'initial' && 'revealed']"
                 >
                     <div class="front" :style="{ transitionDelay: `${index * 300}ms` }">
                         {{ tile.letter }}
@@ -222,7 +223,7 @@ export default {
 </script>
 
 <style>
-h1 {
+h1.game-header {
   margin: 4px 0;
   font-size: 36px;
 }

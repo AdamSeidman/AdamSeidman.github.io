@@ -23,18 +23,23 @@ function SeedRandom(state1,state2){
     return random
 }
 
-var getIndex = function (listSize) {
-    var backlog = []
-    var date = Math.floor((new Date().getTime() - new Date("04/07/2022").getTime()) / (1000 * 3600 * 24))
-    var generator = SeedRandom(Math.ceil(date / listSize))
-    while (backlog.length <= (date % listSize) + 1) {
-        var num = generator(listSize)
-        while (backlog.includes(num)) {
-            num = generator(listSize)
-        }
-        backlog.push(num)
+var getIndex = function (listSize, date) {
+    //var date = Math.floor((new Date().getTime() - new Date("04/07/2022").getTime()) / (1000 * 3600 * 24))
+    if (!date) {
+        date = 1
     }
-    return backlog[backlog.length - 1]
+    var nums = [...Array(listSize).keys()]
+    var generator = SeedRandom(Math.ceil(date / listSize))
+    let count = 0
+    while (count < date % listSize) {
+        if (nums.length == 1) {
+            return 0
+        }
+        let index = generator(nums.length)
+        nums = nums.slice(0, index).concat(nums.slice(index + 1))
+        count++
+    }
+    return nums[generator(nums.length)]
 }
 
 var getRandom = function (listSize) {
