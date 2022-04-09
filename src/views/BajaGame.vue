@@ -15,7 +15,8 @@
                 :class="[
                     'row',
                     shakeRowIndex === index && 'shake',
-                    success && currentRowIndex === index && 'jump'
+                    success && currentRowIndex === index && 'jump',
+                    repeatText
                 ]"
             >
                 <div
@@ -79,6 +80,22 @@ export default {
         },
         wordList() {
           return getValidWordList(this.daily, this.word.length)
+        },
+        repeatText() {
+          switch (this.word.length) {
+            case 4:
+              return "four"
+            case 5:
+              return "five"
+            case 6:
+              return "six"
+            case 7:
+              return "seven"
+            case 8:
+              return "eight"
+            default:
+              return "nine"
+          }
         }
     },
     created () {
@@ -293,8 +310,25 @@ header {
 }
 .row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
+}
+.row.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+.row.five {
+  grid-template-columns: repeat(5, 1fr);
+}
+.row.six {
+  grid-template-columns: repeat(6, 1fr);
+}
+.row.seven {
+  grid-template-columns: repeat(7, 1fr);
+}
+.row.eight {
+  grid-template-columns: repeat(8, 1fr);
+}
+.row.nine {
+  grid-template-columns: repeat(9, 1fr);
 }
 .tile {
   width: 100%;
