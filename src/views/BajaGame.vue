@@ -26,7 +26,7 @@
                         {{ tile.letter }}
                     </div>
                     <div
-                        :class="['back', tile.state]"
+                        :class="['back', tile.state.name]"
                         :style="{
                             transitionDelay: `${index * 300}ms`,
                             animationDelay: `${index * 100}ms`
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <Keyboard @key="showMessage" />
+        <Keyboard @key="onKey" />
     </div>
 </template>
 
@@ -47,6 +47,13 @@ import Keyboard from '../components/Keyboard'
 import random from '../js/game/random'
 import properties from '../js/game/game'
 import getValidWordList from '../js/game/valid-words'
+
+const LetterState = {
+  CORRECT: {icon: '🟩', name: 'correct'},
+  PRESENT: {icon: '🟨', name: 'present'},
+  ABSENT: {icon: '⬜', name: 'absent'},
+  INITIAL: {icon: null, name: 'initial'}
+}
 
 export default {
     components: {
@@ -59,7 +66,9 @@ export default {
             shakeRowIndex: -1,
             currentRowIndex: 0,
             success: false,
-            board: []
+            board: [],
+            allowInput: true,
+            letterStates: []
         }
     },
     computed: {
@@ -73,6 +82,8 @@ export default {
     },
     created () {
         this.setupBoard()
+        const onKeyup = e => this.onKey(e.key)
+        window.addEventListener('keyup', onKeyup)
     },
     methods: {
         showMessage(msg, time) {
@@ -91,31 +102,126 @@ export default {
             }
         },
         setupBoard() {
-            this.board = []
-            let wordLength = this.word.length
-            let numGuesses = properties.getNumGuesses(wordLength)
-            for (let i = 0; i < numGuesses; i++) {
-                this.board.push([])
-                for (let j = 0; j < wordLength; j++) {
-                    this.board[this.board.length - 1].push({letter: "A", state: "filled"}) // todo: change
-                }
+            this.board =
+              Array.from({ length: properties.getNumGuesses(this.word.length) }, () => 
+                Array.from({ length: this.word.length }, () => ({
+                  letter: '',
+                  state: LetterState.INITIAL
+                }))
+              )
+            this.currentRowIndex = 0
+            this.shakeRowIndex = -1
+            this.success = false
+            this.allowInput = true
+            this.letterStates = {}
+            for (let i = 0; i < 26; i++) {
+              this.letterStates[String.fromCharCode(97 + i)] = LetterState.INITIAL
             }
+            this.letterStates["Backspace"] = LetterState.INITIAL
+            this.letterStates["Enter"] = LetterState.INITIAL
+        },
+        onKey(key) {
+          if (!this.allowInput) {
+            return
+          }
+          if (/^[a-zA-Z]$/.test(key)) {
+            this.fillTile(key.toLowerCase())
+          } else if (key === 'Backspace') {
+            this.clearTile()
+          } else if (key === 'Enter') {
+            this.completeRow()
+          }
+        },
+        fillTile(letter) {
+          for (const tile of this.board[this.currentRowIndex]) {
+            if (!tile.letter) {
+              tile.letter = letter
+              break
+            }
+          }
+        },
+        clearTile() {
+          for (const tile of [...this.board[this.currentRowIndex]].reverse()) {
+            if (tile.letter) {
+              tile.letter = ''
+              break
+            }
+          }
+        },
+        completeRow() {
+          if (this.board[this.currentRowIndex].every(tile => tile.letter)) {
+            const guess = this.board[this.currentRowIndex].map(tile => tile.letter).join('')
+            if (!this.isValidWord(guess)) {
+              this.shake()
+              this.showMessage('Not in word list')
+              return
+            }
+            const answerLetters = this.word.split('')
+            // Greens
+            this.board[this.currentRowIndex].forEach((tile, i) => {
+              if (answerLetters[i] === tile.letter) {
+                tile.state = LetterState.CORRECT
+                this.letterStates[tile.letter] = LetterState.CORRECT
+                answerLetters[i] = null
+              }
+            })
+            // Yellows
+            this.board[this.currentRowIndex].forEach(tile => {
+              if (tile.state.name === LetterState.INITIAL.name && answerLetters.includes(tile.letter)) {
+                tile.state = LetterState.PRESENT
+                answerLetters[answerLetters.indexOf(tile.letter)] = null
+              }
+            })
+            // GRAYS
+            this.board[this.currentRowIndex].forEach(tile => {
+              if (tile.state.name === LetterState.INITIAL.name) {
+                tile.state = LetterState.ABSENT
+                if (this.letterStates[tile.letter] === undefined) {
+                  this.letterStates[tile.letter] = LetterState.ABSENT
+                }
+              }
+            })
+
+            this.allowInput = false
+            if (this.board[this.currentRowIndex].every(tile => tile.state.name === LetterState.CORRECT.name)) {
+              this.showMessage(['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][this.currentRowIndex])
+              this.success = true// TODO
+            } else if (this.currentRowIndex < this.board.length - 1) {
+              this.currentRowIndex++
+              let self = this
+              setTimeout(() => {
+                self.allowInput = true
+              }, 1600)
+            } else {
+              this.showMessage("GAME OVER") // timeout? TODO
+              // TODO game over
+            }
+            // todo allow input
+          } else {
+            this.shake()
+            this.showMessage("Not enough letters")
+          }
         },
         isValidWord(word) {
-          return this.wordList.includes(word)
+          return this.wordList.includes(word.toUpperCase())
+        },
+        shake() {
+          this.shakeRowIndex = this.currentRowIndex
+          let self = this
+          setTimeout(() => {
+            self.shakeRowIndex = -1
+          }, 1000)
+        },
+        getResultGrid() {
+          return board.slice(0, currentRowIndex + 1).map(row => {
+            return row.map(tile => tile.state.icon).join('')
+          }).join('\n')
         }
     }
 }
 </script>
 
 <style>
-body {
-  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-  text-align: center;
-  max-width: 500px;
-  margin: 0px auto;
-}
-
 h1 {
   margin: 4px 0;
   font-size: 36px;
@@ -305,5 +411,12 @@ header {
   .tile {
     font-size: 3vh;
   }
+}
+
+div.game-container {
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  text-align: center;
+  max-width: 500px;
+  margin: 0px auto;
 }
 </style>

@@ -69,8 +69,8 @@ var wordLists = {
 
 function addToLists(customWordList, property) {
     customWordList.forEach(word => {
-        if (!wordLists[property][word.length].includes(word)) {
-            wordLists[property][word.length].push(word)
+        if (!wordLists[property][word.length].includes(word.toUpperCase())) {
+            wordLists[property][word.length].push(word.toUpperCase())
         }
     });
 }

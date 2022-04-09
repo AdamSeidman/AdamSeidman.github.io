@@ -1,9 +1,10 @@
 <template>
   <div id="keyboard">
-    <div class="row" v-for="row in this.rows" :key="row[0]">
+    <div class="row" v-for="(row, i) in this.rows" :key="row[0]">
+      <div class="spacer" v-if="i===1"></div>
       <button
         v-for="key in row"
-        :key="key" :class="[key.length > 1 && 'big', 'key']"
+        :key="key" :class="[key.length > 1 && 'big', 'key', letterStates && letterStates[key].name]"
         @click="$emit('key', key)"
       >
         <span v-if="key !== 'Backspace'">{{ key }}</span>
@@ -20,12 +21,14 @@
           ></path>
         </svg>
       </button>
+      <div class="spacer" v-if="i===1"></div>
     </div>
   </div>
 </template>
 
 <script setup>
 export default {
+    props: ['letterStates'],
     data () {
         return {
             rows: [
