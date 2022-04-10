@@ -1,5 +1,5 @@
 const SLANG = [
-    "jamoke", "headass", "klutchez", "monster", "cigs", "equations", "wordle", "drip", "ranch", "funfact", "cranked", "alerts", "koolaid", "critter", "sendit", "nfts",
+    "jamoke", "monster", "cigs", "equations", "wordle", "drip", "ranch", "funfact", "cranked", "alerts", "koolaid", "critter", "sendit", "nfts", "bajadle",
     "bajablast", "kermit"
 ]
 

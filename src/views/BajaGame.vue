@@ -243,6 +243,9 @@ export default {
               setTimeout(() => {
                 self.showMessage(['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][this.currentRowIndex])
                 self.success = true
+                setTimeout(() => {
+                  self.showMessage('CONGRATULATIONS!', -1, true)
+                }, (100 * this.word.length) + 1200)
               }, (300 * this.word.length) + 50)
             } else if (this.currentRowIndex < this.board.length - 1) {
               this.currentRowIndex++
