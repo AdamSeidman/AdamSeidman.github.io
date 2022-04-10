@@ -23,8 +23,12 @@ function SeedRandom(state1,state2){
     return random
 }
 
-var getIndex = function (listSize, date) {
-    var date = Math.floor((new Date().getTime() - new Date("04/07/2022").getTime()) / (1000 * 3600 * 24))
+var getDate = function () {
+    return Math.floor((new Date().getTime() - new Date("04/09/2022").getTime()) / (1000 * 3600 * 24))
+}
+
+var getIndex = function (listSize) {
+    var date = getDate()
     var nums = [...Array(listSize).keys()]
     var generator = SeedRandom(Math.ceil(date / listSize))
     let count = 0
@@ -46,7 +50,8 @@ var getRandom = function (listSize) {
 
 const random = {
     getTodaysIndex: getIndex,
-    getRandomIndex: getRandom
+    getRandomIndex: getRandom,
+    getDaysSinceStart: getDate
 }
 
 export default random;

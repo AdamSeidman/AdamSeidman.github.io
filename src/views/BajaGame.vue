@@ -2,7 +2,14 @@
     <div class="game-container">
         <Transition>
           <div class="message" v-if="this.msg.showMessage">
-            {{ this.msg.message }}
+            <span v-for="(line, index) in this.msg.message" :key="`msg-row ${index}`">
+              {{ line }}<br>
+            </span>
+            <span v-if="this.msg.showEndBlurb">
+              <br>
+              <button @click="copyResultGrid()">Share!</button> &nbsp;
+              <button><span v-if="this.daily">Practice</span><span v-else>Try Again</span></button>
+            </span>
           </div>
         </Transition>
         <header>
@@ -59,9 +66,11 @@ import getValidWordList from '../js/game/valid-words'
 const LetterState = {
   CORRECT: {icon: '🟩', name: 'correct'},
   PRESENT: {icon: '🟨', name: 'present'},
-  ABSENT: {icon: '⬜', name: 'absent'},
+  ABSENT: {icon: '⬛', name: 'absent'},
   INITIAL: {icon: null, name: 'initial'}
 }
+
+const COOKIE_KEY = "BAJADLE-COOKIE"
 
 export default {
     components: {
@@ -72,14 +81,27 @@ export default {
     },
     data () {
         return {
-            msg: {message: "", showMessage: false, index: 0},
-            //daily: true,
+            msg: {message: "", showMessage: false, index: 0, showEndBlurb: false},
             shakeRowIndex: -1,
             currentRowIndex: 0,
             success: false,
             board: [],
             allowInput: true,
-            letterStates: []
+            letterStates: [],
+            cookie: {
+              darkMode: false,
+              numTimesPlayed: 0,
+              numTimesWon: 0,
+              lastGamePlayed: -5,
+              currentStreak: 0,
+              maxStreak: 0,
+              practice_disallowSlang: false,
+              practice_disallowCompanies: false,
+              practice_disallowPeople: false,
+              practice_disallowGeneral: false,
+              practice_disallowTechnical: false,
+              settingsString: ''
+            }
         }
     },
     computed: {
@@ -100,16 +122,31 @@ export default {
         const onKeyup = e => this.onKey(e.key)
         window.addEventListener('keyup', onKeyup)
     },
+    mounted () {
+        if (this.$cookies.isKey(COOKIE_KEY)) {
+          let c = this.$cookies.get(COOKIE_KEY)
+          let self = this
+          Object.keys(c).forEach(key => {
+            self.$set(self.cookie, key, c[key])
+          })
+        } else {
+          this.$cookies.set(COOKIE_KEY, this.cookie)
+        }
+    },
     methods: {
         getDelayString(index, k) {
           return `${index * 100 * k}ms`
         },
-        showMessage(msg, time) {
+        showMessage(msg, time, showEndBlurb) {
             if (time === void 0) { time = 1000; }
+            if (!Array.isArray(msg)) {
+              msg = [msg]
+            }
             this.msg.message = msg;
             this.msg.index += 1
             let index = this.msg.index
             this.$set(this.msg, 'showMessage', true)
+            this.$set(this.msg, 'showEndBlurb', showEndBlurb === true)
             let self = this
             if (time > 0) {
                 setTimeout(function () {
@@ -167,13 +204,13 @@ export default {
         },
         completeRow() {
           if (this.board[this.currentRowIndex].every(tile => tile.letter)) {
-            const guess = this.board[this.currentRowIndex].map(tile => tile.letter).join('')
+            const guess = this.board[this.currentRowIndex].map(tile => tile.letter).join('').toLowerCase()
             if (!this.isValidWord(guess)) {
               this.shake()
               this.showMessage('Not in word list')
               return
             }
-            const answerLetters = this.word.split('')
+            const answerLetters = this.word.toLowerCase().split('')
             // Greens
             this.board[this.currentRowIndex].forEach((tile, i) => {
               if (answerLetters[i] === tile.letter) {
@@ -186,6 +223,7 @@ export default {
             this.board[this.currentRowIndex].forEach(tile => {
               if (tile.state.name === LetterState.INITIAL.name && answerLetters.includes(tile.letter)) {
                 tile.state = LetterState.PRESENT
+                this.$set(this.letterStates, tile.letter, LetterState.PRESENT)
                 answerLetters[answerLetters.indexOf(tile.letter)] = null
               }
             })
@@ -201,8 +239,11 @@ export default {
 
             this.allowInput = false
             if (this.board[this.currentRowIndex].every(tile => tile.state.name === LetterState.CORRECT.name)) {
-              this.showMessage(['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][this.currentRowIndex])
-              this.success = true// TODO
+              let self = this
+              setTimeout(() => {
+                self.showMessage(['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][this.currentRowIndex])
+                self.success = true
+              }, (300 * this.word.length) + 50)
             } else if (this.currentRowIndex < this.board.length - 1) {
               this.currentRowIndex++
               let self = this
@@ -210,7 +251,7 @@ export default {
                 self.allowInput = true
               }, 250)
             } else {
-              this.showMessage(`GAME OVER\nThe word was ${this.word.toUpperCase()}`) // timeout? TODO
+              this.showMessage(['GAME OVER', ' ', `The word was ${this.word.toUpperCase()}`], -1, true) // timeout? TODO
               // TODO game over
             }
             // todo allow input
@@ -229,10 +270,21 @@ export default {
             self.shakeRowIndex = -1
           }, 1000)
         },
-        getResultGrid() {
-          return board.slice(0, currentRowIndex + 1).map(row => {
+        copyResultGrid() {
+          let numTries = this.currentRowIndex + 1
+          if (!this.success) {
+            numTries = 'X'
+          }
+          let typeBlurb = random.getDaysSinceStart()
+          if (!this.daily) {
+            typeBlurb = `Practice: ${this.WORD.toUpperCase()}`
+          }
+          let grid = `RIT Baja-dle ${typeBlurb} ${numTries}/${properties.getNumGuesses(this.word.length)}\n`
+          grid += this.board.slice(0, this.currentRowIndex + 1).map(row => {
             return row.map(tile => tile.state.icon).join('')
           }).join('\n')
+          navigator.clipboard.writeText(grid)
+          alert('Copied!')
         }
     }
 }

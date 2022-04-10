@@ -16,7 +16,7 @@ function addWordList(wordList, blockFromDaily, blockFromPractice) {
 
 addWordList(COMPANIES)
 addWordList(GENERAL_WORDS)
-addWordList(PEOPLE)
+addWordList(PEOPLE, true)
 addWordList(SLANG)
 addWordList(TECHNICAL_WORDS)
 

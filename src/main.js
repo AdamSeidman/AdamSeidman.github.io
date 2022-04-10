@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueCookies from 'vue-cookies'
 import App from './App.vue'
 import HomePage from './views/HomePage'
 import NotFound from './views/NotFound'
@@ -11,6 +12,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 Vue.use(VueRouter)
+Vue.use(VueCookies, { expire: '9999d' })
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 library.add(faGithub)
