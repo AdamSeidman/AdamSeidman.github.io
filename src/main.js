@@ -38,12 +38,20 @@ const router = new VueRouter({
     {
       name: 'bajadle',
       path: '/bajadle',
-      component: BajaGame
+      component: BajaGame,
+      props: {daily: true}
     },
     {
       name: 'game',
       path: '/game',
-      component: BajaGame
+      component: BajaGame,
+      props: {daily: true}
+    },
+    {
+      name: 'game-infinite',
+      path: '/game-infinite',
+      component: BajaGame,
+      props: {daily: false}
     },
     {
       name: '404',

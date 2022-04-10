@@ -24,10 +24,7 @@ function SeedRandom(state1,state2){
 }
 
 var getIndex = function (listSize, date) {
-    //var date = Math.floor((new Date().getTime() - new Date("04/07/2022").getTime()) / (1000 * 3600 * 24))
-    if (!date) {
-        date = 1
-    }
+    var date = Math.floor((new Date().getTime() - new Date("04/07/2022").getTime()) / (1000 * 3600 * 24))
     var nums = [...Array(listSize).keys()]
     var generator = SeedRandom(Math.ceil(date / listSize))
     let count = 0

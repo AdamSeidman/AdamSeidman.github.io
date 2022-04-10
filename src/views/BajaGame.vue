@@ -16,30 +16,36 @@
                     'row',
                     shakeRowIndex === index && 'shake',
                     success && currentRowIndex === index && 'jump',
-                    repeatText
+                    `t${word.length}`
                 ]"
             >
                 <div
                     v-for="(tile, subindex) in row"
                     :key="`row ${index} tile ${subindex}`"
-                    :class="['tile', tile.letter.length > 0 && 'filled', tile.state.name !== 'initial' && 'revealed']"
+                    :class="[
+                      'tile',
+                      tile.letter.length > 0 && 'filled',
+                      tile.state.name !== 'initial' && 'revealed'
+                    ]"
                 >
-                    <div class="front" :style="{ transitionDelay: getDelayString(index, 3) }">
+                    <div
+                      :class="[
+                        'front',
+                        `d${subindex}`,
+                        success && currentRowIndex == index && 'hideTile'
+                      ]"
+                    >
                         {{ tile.letter }}
                     </div>
                     <div
-                        :class="['back', tile.state.name]"
-                        :style="{
-                            transitionDelay: getDelayString(index, 3),
-                            animationDelay: getDelayString(index, 1)
-                        }"
+                        :class="['back', tile.state.name, `d${subindex}`]"
                     >
                         {{ tile.letter }}
                     </div>
                 </div>
             </div>
         </div>
-        <Keyboard @key="onKey" />
+        <Keyboard @key="onKey" :letterStates="letterStates" />
     </div>
 </template>
 
@@ -61,10 +67,13 @@ export default {
     components: {
         Keyboard
     },
+    props: {
+      daily: Boolean
+    },
     data () {
         return {
             msg: {message: "", showMessage: false, index: 0},
-            daily: true,
+            //daily: true,
             shakeRowIndex: -1,
             currentRowIndex: 0,
             success: false,
@@ -76,26 +85,14 @@ export default {
     computed: {
         word() {
             let wordList = getWordList(this.daily)
-            return wordList[random.getTodaysIndex(wordList.length)]
+            let index = random.getTodaysIndex(wordList.length)
+            if (!this.daily) {
+              index = random.getRandomIndex(wordList.length)
+            }
+            return wordList[index]
         },
         wordList() {
           return getValidWordList(this.daily, this.word.length)
-        },
-        repeatText() {
-          switch (this.word.length) {
-            case 4:
-              return "four"
-            case 5:
-              return "five"
-            case 6:
-              return "six"
-            case 7:
-              return "seven"
-            case 8:
-              return "eight"
-            default:
-              return "nine"
-          }
         }
     },
     created () {
@@ -134,9 +131,8 @@ export default {
             this.shakeRowIndex = -1
             this.success = false
             this.allowInput = true
-            this.letterStates = {}
             for (let i = 0; i < 26; i++) {
-              this.letterStates[String.fromCharCode(97 + i)] = LetterState.INITIAL
+              this.$set(this.letterStates, String.fromCharCode(97 + i), LetterState.INITIAL)
             }
             this.letterStates["Backspace"] = LetterState.INITIAL
             this.letterStates["Enter"] = LetterState.INITIAL
@@ -182,7 +178,7 @@ export default {
             this.board[this.currentRowIndex].forEach((tile, i) => {
               if (answerLetters[i] === tile.letter) {
                 tile.state = LetterState.CORRECT
-                this.letterStates[tile.letter] = LetterState.CORRECT
+                this.$set(this.letterStates, tile.letter, LetterState.CORRECT)
                 answerLetters[i] = null
               }
             })
@@ -197,8 +193,8 @@ export default {
             this.board[this.currentRowIndex].forEach(tile => {
               if (tile.state.name === LetterState.INITIAL.name) {
                 tile.state = LetterState.ABSENT
-                if (this.letterStates[tile.letter] === undefined) {
-                  this.letterStates[tile.letter] = LetterState.ABSENT
+                if (this.letterStates[tile.letter].name === LetterState.INITIAL.name) {
+                  this.$set(this.letterStates, tile.letter, LetterState.ABSENT)
                 }
               }
             })
@@ -214,7 +210,7 @@ export default {
                 self.allowInput = true
               }, 250)
             } else {
-              this.showMessage("GAME OVER") // timeout? TODO
+              this.showMessage(`GAME OVER\nThe word was ${this.word.toUpperCase()}`) // timeout? TODO
               // TODO game over
             }
             // todo allow input
@@ -243,6 +239,10 @@ export default {
 </script>
 
 <style>
+.hideTile {
+  opacity: 0;
+}
+
 h1.game-header {
   margin: 4px 0;
   font-size: 36px;
@@ -281,6 +281,62 @@ header {
 </style>
 
 <style scoped>
+.d0 {
+  transition-delay: 0ms !important;
+}
+.d1 {
+  transition-delay: 300ms !important;
+}
+.d2 {
+  transition-delay: 600ms !important;
+}
+.d3 {
+  transition-delay: 900ms !important;
+}
+.d4 {
+  transition-delay: 1200ms !important;
+}
+.d5 {
+  transition-delay: 1500ms !important;
+}
+.d6 {
+  transition-delay: 1800ms !important;
+}
+.d7 {
+  transition-delay: 2100ms !important;
+}
+.d8 {
+  transition-delay: 2400ms !important;
+}
+
+.d0.back {
+  animation-delay: 0ms !important;
+}
+.d1.back {
+  animation-delay: 100ms !important;
+}
+.d2.back {
+  animation-delay: 200ms !important;
+}
+.d3.back {
+  animation-delay: 300ms !important;
+}
+.d4.back {
+  animation-delay: 400ms !important;
+}
+.d5.back {
+  animation-delay: 500ms !important;
+}
+.d6.back {
+  animation-delay: 600ms !important;
+}
+.d7.back {
+  animation-delay: 700ms !important;
+}
+.d8.back {
+  animation-delay: 800ms !important;
+}
+
 #board {
   display: grid;
   grid-template-rows: repeat(6, 1fr);
@@ -312,22 +368,22 @@ header {
   display: grid;
   grid-gap: 5px;
 }
-.row.four {
+.row.t4 {
   grid-template-columns: repeat(4, 1fr);
 }
-.row.five {
+.row.t5 {
   grid-template-columns: repeat(5, 1fr);
 }
-.row.six {
+.row.t6 {
   grid-template-columns: repeat(6, 1fr);
 }
-.row.seven {
+.row.t7 {
   grid-template-columns: repeat(7, 1fr);
 }
-.row.eight {
+.row.t8 {
   grid-template-columns: repeat(8, 1fr);
 }
-.row.nine {
+.row.t9 {
   grid-template-columns: repeat(9, 1fr);
 }
 .tile {

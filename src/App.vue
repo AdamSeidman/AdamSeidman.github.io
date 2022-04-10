@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     notGameRoute () {
-      return this.$route.name !== "game" && this.$route.name !== "bajadle"
+      return this.$route.name !== "game" && this.$route.name !== "bajadle" && this.$route.name !== "game-infinite"
     } 
   },
   methods: {

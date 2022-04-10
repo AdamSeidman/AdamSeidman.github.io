@@ -4,7 +4,7 @@
       <div class="spacer" v-if="i===1"></div>
       <button
         v-for="key in row"
-        :key="key" :class="[key.length > 1 && 'big', 'key', letterStates && letterStates[key].name]"
+        :key="key" :class="[key.length > 1 && 'big', 'key', letterStates !== undefined && letterStates[key].name]"
         @click="$emit('key', key)"
       >
         <span v-if="key !== 'Backspace'">{{ key }}</span>
@@ -29,6 +29,11 @@
 <script setup>
 export default {
     props: ['letterStates'],
+    methods: {
+      aaa() {
+        console.log(this.letterStates)
+      }
+    },
     data () {
         return {
             rows: [
