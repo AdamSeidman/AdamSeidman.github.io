@@ -7,8 +7,10 @@
             </span>
             <span v-if="this.msg.showEndBlurb">
               <br>
-              <button @click="copyResultGrid()">Share!</button> &nbsp;
-              <button><span v-if="this.daily">Practice</span><span v-else>Try Again</span></button>
+              <button @click="copyResultGrid()">Share</button> &nbsp;
+              <button @click="goToInfinite()">
+                  <span v-if="this.daily">Practice</span><span v-else>Try Again</span>
+              </button>
             </span>
           </div>
         </Transition>
@@ -53,6 +55,7 @@
             </div>
         </div>
         <Keyboard @key="onKey" :letterStates="letterStates" />
+        <textarea id="copy-text">a</textarea>
     </div>
 </template>
 
@@ -136,6 +139,9 @@ export default {
     methods: {
         getDelayString(index, k) {
           return `${index * 100 * k}ms`
+        },
+        goToInfinite() {
+          window.location = "https://seidman-ad.am/game-infinite"
         },
         showMessage(msg, time, showEndBlurb) {
             if (time === void 0) { time = 1000; }
@@ -286,7 +292,14 @@ export default {
           grid += this.board.slice(0, this.currentRowIndex + 1).map(row => {
             return row.map(tile => tile.state.icon).join('')
           }).join('\n')
-          navigator.clipboard.writeText(grid)
+          this.copyText(grid)
+        },
+        copyText(text) {
+          navigator.clipboard.writeText(text)
+          const smartTA = document.getElementById("copy-text")
+          smartTA.innerHTML = text
+          smartTA.select()
+          document.execCommand("Copy")
           alert('Copied!')
         }
     }
@@ -294,6 +307,12 @@ export default {
 </script>
 
 <style>
+textarea#copy-text {
+  opacity: 0;
+  position: absolute;
+  font-size: 1px;
+}
+
 .hideTile {
   opacity: 0;
 }
