@@ -15,7 +15,9 @@
           </div>
         </Transition>
         <header>
-            <h1 class="game-header">RIT BAJA-DLE</h1>
+            <h1 class="game-header">
+              <GameHeader :daily="daily">RIT BAJA-DLE</GameHeader>
+            </h1>
         </header>
         <div id="board">
             <div
@@ -62,9 +64,11 @@
 <script>
 import getWordList from '../js/game/words'
 import Keyboard from '../components/Keyboard'
+import GameHeader from '../components/GameHeader.vue'
 import random from '../js/game/random'
 import properties from '../js/game/game'
 import getValidWordList from '../js/game/valid-words'
+import OVERRIDE_WORDS from '../js/game/words/override-words'
 
 const LetterState = {
   CORRECT: {icon: '🟩', name: 'correct'},
@@ -77,7 +81,8 @@ const COOKIE_KEY = "BAJADLE-COOKIE"
 
 export default {
     components: {
-        Keyboard
+        Keyboard,
+        GameHeader
     },
     props: {
       daily: Boolean
@@ -90,7 +95,8 @@ export default {
             success: false,
             board: [],
             allowInput: true,
-            letterStates: [],
+            letterStates: {Backspace: LetterState.INITIAL, Enter: LetterState.INITIAL},
+            showSettings: true,
             cookie: {
               darkMode: false,
               numTimesPlayed: 0,
@@ -109,6 +115,10 @@ export default {
     },
     computed: {
         word() {
+            let days = random.getDaysSinceStart().toString()
+            if (Object.keys(OVERRIDE_WORDS).includes(days)) {
+              return OVERRIDE_WORDS[days]
+            }
             let wordList = getWordList(this.daily)
             let index = random.getTodaysIndex(wordList.length)
             if (!this.daily) {
@@ -121,7 +131,17 @@ export default {
         }
     },
     created () {
-        this.setupBoard()
+        this.board =
+          Array.from({ length: properties.getNumGuesses(this.word.length) }, () => 
+            Array.from({ length: this.word.length }, () => ({
+              letter: '',
+              state: LetterState.INITIAL
+            }))
+          )
+        for (let i = 0; i < 26; i++) {
+          this.$set(this.letterStates, String.fromCharCode(97 + i), LetterState.INITIAL)
+        }
+
         const onKeyup = e => this.onKey(e.key)
         window.addEventListener('keyup', onKeyup)
     },
@@ -132,9 +152,11 @@ export default {
           Object.keys(c).forEach(key => {
             self.$set(self.cookie, key, c[key])
           })
-        } else {
-          this.$cookies.set(COOKIE_KEY, this.cookie)
         }
+        delete this.cookie.nightMode
+        this.cookie.darkMode = true
+        this.$cookies.set(COOKIE_KEY, this.cookie)
+        console.log(this.$cookies.get(COOKIE_KEY))
     },
     methods: {
         getDelayString(index, k) {
@@ -161,24 +183,6 @@ export default {
                     }
                 }, time);
             }
-        },
-        setupBoard() {
-            this.board =
-              Array.from({ length: properties.getNumGuesses(this.word.length) }, () => 
-                Array.from({ length: this.word.length }, () => ({
-                  letter: '',
-                  state: LetterState.INITIAL
-                }))
-              )
-            this.currentRowIndex = 0
-            this.shakeRowIndex = -1
-            this.success = false
-            this.allowInput = true
-            for (let i = 0; i < 26; i++) {
-              this.$set(this.letterStates, String.fromCharCode(97 + i), LetterState.INITIAL)
-            }
-            this.letterStates["Backspace"] = LetterState.INITIAL
-            this.letterStates["Enter"] = LetterState.INITIAL
         },
         onKey(key) {
           if (!this.allowInput) {
@@ -260,10 +264,8 @@ export default {
                 self.allowInput = true
               }, 250)
             } else {
-              this.showMessage(['GAME OVER', ' ', `The word was ${this.word.toUpperCase()}`], -1, true) // timeout? TODO
-              // TODO game over
+              this.showMessage(['GAME OVER', ' ', `The word was ${this.word.toUpperCase()}`], -1, true)
             }
-            // todo allow input
           } else {
             this.shake()
             this.showMessage("Not enough letters")
@@ -352,9 +354,24 @@ header {
   background-color: #787c7e !important;
 }
 
-</style>
+.message {
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 16px 20px;
+  z-index: 2;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease-out;
+  font-weight: 600;
+}
 
-<style scoped>
+.message.v-leave-to {
+  opacity: 0;
+}
+
 .d0 {
   transition-delay: 0ms !important;
 }
@@ -421,22 +438,6 @@ header {
   height: var(--height);
   width: min(350px, calc(var(--height) / 6 * 5));
   margin: 0px auto;
-}
-.message {
-  position: absolute;
-  left: 50%;
-  top: 80px;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.85);
-  padding: 16px 20px;
-  z-index: 2;
-  border-radius: 4px;
-  transform: translateX(-50%);
-  transition: opacity 0.3s ease-out;
-  font-weight: 600;
-}
-.message.v-leave-to {
-  opacity: 0;
 }
 .row {
   display: grid;
