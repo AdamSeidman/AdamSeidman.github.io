@@ -9,7 +9,7 @@ import BajaGame from './views/BajaGame'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faCog, faInfinity, faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faCog, faInfinity, faCalendar, faShare } from '@fortawesome/free-solid-svg-icons'
 
 Vue.use(VueRouter)
 Vue.use(VueCookies, { expire: '9999d' })
@@ -21,6 +21,7 @@ library.add(faEnvelope)
 library.add(faCog)
 library.add(faInfinity)
 library.add(faCalendar)
+library.add(faShare)
 
 const router = new VueRouter({
   mode: 'history',
