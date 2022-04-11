@@ -29,11 +29,6 @@
 <script setup>
 export default {
     props: ['letterStates'],
-    methods: {
-      aaa() {
-        console.log(this.letterStates)
-      }
-    },
     data () {
         return {
             rows: [

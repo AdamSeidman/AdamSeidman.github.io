@@ -9,7 +9,7 @@
               <br>
               <button @click="copyResultGrid()">Share</button> &nbsp;
               <button @click="goToInfinite()">
-                  <span v-if="this.daily">Practice</span><span v-else>Try Again</span>
+                  <span v-if="this.daily">Practice</span><span v-else>Play Again</span>
               </button>
             </span>
           </div>
@@ -288,7 +288,7 @@ export default {
           }
           let typeBlurb = random.getDaysSinceStart()
           if (!this.daily) {
-            typeBlurb = `Practice: ${this.WORD.toUpperCase()}`
+            typeBlurb = `Practice: ${this.word.toUpperCase()}`
           }
           let grid = `RIT Baja-dle ${typeBlurb} ${numTries}/${properties.getNumGuesses(this.word.length)}\n`
           grid += this.board.slice(0, this.currentRowIndex + 1).map(row => {
