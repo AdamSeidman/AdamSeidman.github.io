@@ -116,7 +116,7 @@ export default {
     computed: {
         word() {
             let days = random.getDaysSinceStart().toString()
-            if (Object.keys(OVERRIDE_WORDS).includes(days)) {
+            if (Object.keys(OVERRIDE_WORDS).includes(days) && this.daily) {
               return OVERRIDE_WORDS[days]
             }
             let wordList = getWordList(this.daily)
