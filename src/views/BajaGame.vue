@@ -19,7 +19,7 @@
               <GameHeader :daily="daily">RIT BAJA-DLE</GameHeader>
             </h1>
         </header>
-        <div id="board">
+        <div id="board" :class="[`rows-${numGuesses}`]">
             <div
                 v-for="(row, index) in board"
                 :key="`row ${index}`"
@@ -128,11 +128,14 @@ export default {
         },
         wordList() {
           return getValidWordList(this.daily, this.word.length)
+        },
+        numGuesses() {
+          return properties.getNumGuesses(this.word.length)
         }
     },
     created () {
         this.board =
-          Array.from({ length: properties.getNumGuesses(this.word.length) }, () => 
+          Array.from({ length: this.numGuesses }, () => 
             Array.from({ length: this.word.length }, () => ({
               letter: '',
               state: LetterState.INITIAL
@@ -233,8 +236,10 @@ export default {
             this.board[this.currentRowIndex].forEach(tile => {
               if (tile.state.name === LetterState.INITIAL.name && answerLetters.includes(tile.letter)) {
                 tile.state = LetterState.PRESENT
-                this.$set(this.letterStates, tile.letter, LetterState.PRESENT)
                 answerLetters[answerLetters.indexOf(tile.letter)] = null
+                if (this.letterStates[tile.letter].name === LetterState.INITIAL.name) {
+                  this.$set(this.letterStates, tile.letter, LetterState.PRESENT)
+                }
               }
             })
             // GRAYS
@@ -251,7 +256,18 @@ export default {
             if (this.board[this.currentRowIndex].every(tile => tile.state.name === LetterState.CORRECT.name)) {
               let self = this
               setTimeout(() => {
-                self.showMessage(['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][this.currentRowIndex])
+                self.showMessage([
+                    'Genius',
+                    'Magnificent',
+                    'Impressive',
+                    'Splendid',
+                    'Great',
+                    'Phew',
+                    'Good Enough...',
+                    'Okay',
+                    'Okay',
+                    'Okay'
+                  ][this.currentRowIndex])
                 self.success = true
                 setTimeout(() => {
                   self.showMessage('CONGRATULATIONS!', -1, true)
@@ -290,7 +306,7 @@ export default {
           if (!this.daily) {
             typeBlurb = `Practice: ${this.word.toUpperCase()}`
           }
-          let grid = `RIT Baja-dle ${typeBlurb} ${numTries}/${properties.getNumGuesses(this.word.length)}\n`
+          let grid = `RIT Baja-dle ${typeBlurb} ${numTries}/${this.numGuesses}\n`
           grid += this.board.slice(0, this.currentRowIndex + 1).map(row => {
             return row.map(tile => tile.state.icon).join('')
           }).join('\n')
@@ -430,7 +446,6 @@ header {
 
 #board {
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
   grid-gap: 5px;
   padding: 10px;
   box-sizing: border-box;
@@ -439,6 +454,26 @@ header {
   width: min(350px, calc(var(--height) / 6 * 5));
   margin: 0px auto;
 }
+
+#board.guesses-5 {
+  grid-template-rows: repeat(5, 1fr);
+}
+#board.guesses-6 {
+  grid-template-rows: repeat(6, 1fr);
+}
+#board.guesses-7 {
+  grid-template-rows: repeat(7, 1fr);
+}
+#board.guesses-8 {
+  grid-template-rows: repeat(8, 1fr);
+}
+#board.guesses-9 {
+  grid-template-rows: repeat(9, 1fr);
+}
+#board.guesses-10 {
+  grid-template-rows: repeat(10, 1fr);
+}
+
 .row {
   display: grid;
   grid-gap: 5px;

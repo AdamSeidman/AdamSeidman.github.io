@@ -67,6 +67,11 @@ const projects = [
         [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'shifter'),
+    new Project('Baja Wordle', 'https://seidman-ad.am/bajadle',
+        'Better know as "RIT Baja-dle", I jumped on the wordle craze and made a vue app for this website using only RIT Baja terms. It has both daily and infinite versions. I also implemented cookies for settings.',
+        [
+            'JavaScript', 'Vue-Cookies', 'VueJS'
+        ], 'wordle'),
     new Project('Web Checkers', 'https://github.com/AdamSeidman/Checkers-App',
         'Web Checkers was a semester long group project for the Intro to Software Engineering class. It was required to connect to other players over the web to play a game of checkers.', 
         [
@@ -80,7 +85,7 @@ const projects = [
     new Project('Personal Website', 'https://github.com/AdamSeidman/AdamSeidman.github.io',
         'That\'s this website! I created this site in July/August 2020 in my free time between classes. Recently, I have been working with 3D CSS to create this project carousel. I wanted to try creating my own website with VueJS, and I am proud of the way it turned out.',
         [
-            '3D CSS', 'Github-Pages', 'Sass', 'VS Code', 'VueJS'
+            '3D CSS', 'Github-Pages', 'Sass', 'Shell', 'VS Code', 'VueJS'
         ], 'vuejs'),
     new Project('Stackable DAQ', 'https://github.com/AdamSeidman/SDAQ',
         'Leading a small team, I created a new Raspberry Pi-based data acquisition system to be used for RIT Baja. These new technologies will/are being used to replace most of the teams\' outdated hardware.',
