@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" :class="nightMode && 'nightMode'">
     <media-bar v-if="notGameRoute"></media-bar>
-    <router-view></router-view>
+    <router-view @swapColors="swapColors"></router-view>
     <nav-bar v-if="notGameRoute"></nav-bar>
   </div>
 </template>
@@ -18,6 +18,11 @@ export default {
     MediaBar,
     NavBar
   },
+  data () {
+    return {
+      nightMode: false
+    }
+  },
   created () {
     this.noteGameRoute
     window.addEventListener("resize", this.handleResize)
@@ -31,6 +36,9 @@ export default {
     } 
   },
   methods: {
+    swapColors() {
+      this.nightMode = !this.nightMode
+    },
     handleResize () {
       let el = document.getElementById('app')
       el.className = ''
@@ -56,6 +64,12 @@ body {
   margin: 0px;
   overflow-x: hidden;
   background-color: whitesmoke;
+}
+
+div#app.nightMode {
+  background-color: #1E2021;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @keyframes fadeIn {

@@ -1,5 +1,5 @@
 <template>
-    <div class="game-container">
+    <div :class="['game-container', cookie.nightMode && 'nightMode']">
         <Transition>
           <div class="message" v-if="this.msg.showMessage">
             <span v-for="(line, index) in this.msg.message" :key="`msg-row ${index}`">
@@ -16,7 +16,13 @@
         </Transition>
         <header>
             <h1 class="game-header">
-              <GameHeader :daily="daily">RIT BAJA-DLE</GameHeader>
+              <GameHeader
+                :daily="daily"
+                :cookie="this.cookie"
+                @change="this.cookieChange"
+              >
+                RIT BAJA-DLE
+              </GameHeader>
             </h1>
         </header>
         <div id="board" :class="[`rows-${numGuesses}`]">
@@ -35,6 +41,7 @@
                     :key="`row ${index} tile ${subindex}`"
                     :class="[
                       'tile',
+                      cookie.nightMode && 'nightMode',
                       tile.letter.length > 0 && 'filled',
                       tile.state.name !== 'initial' && 'revealed'
                     ]"
@@ -42,6 +49,7 @@
                     <div
                       :class="[
                         'front',
+                        cookie.nightMode && 'nightMode',
                         `d${subindex}`,
                         success && currentRowIndex == index && 'hideTile'
                       ]"
@@ -64,7 +72,7 @@
 <script>
 import getWordList from '../js/game/words'
 import Keyboard from '../components/Keyboard'
-import GameHeader from '../components/GameHeader.vue'
+import GameHeader from '../components/GameHeader'
 import random from '../js/game/random'
 import properties from '../js/game/game'
 import getValidWordList from '../js/game/valid-words'
@@ -98,7 +106,7 @@ export default {
             letterStates: {Backspace: LetterState.INITIAL, Enter: LetterState.INITIAL},
             showSettings: true,
             cookie: {
-              darkMode: false,
+              nightMode: false,
               numTimesPlayed: 0,
               numTimesWon: 0,
               lastGamePlayed: -5,
@@ -110,7 +118,8 @@ export default {
               practice_disallowGeneral: false,
               practice_disallowTechnical: false,
               settingsString: ''
-            }
+            },
+            bodyNightMode: false
         }
     },
     computed: {
@@ -156,12 +165,20 @@ export default {
             self.$set(self.cookie, key, c[key])
           })
         }
-        delete this.cookie.nightMode
-        this.cookie.darkMode = true
         this.$cookies.set(COOKIE_KEY, this.cookie)
-        console.log(this.$cookies.get(COOKIE_KEY))
+        this.updateBodyColor()
     },
     methods: {
+        cookieChange() {
+          this.$cookies.set(COOKIE_KEY, this.cookie)
+          this.updateBodyColor()
+        },
+        updateBodyColor() {
+          if (this.bodyNightMode !== this.cookie.nightMode) {
+            this.$emit("swapColors")
+            this.bodyNightMode = !this.bodyNightMode
+          }
+        },
         getDelayString(index, k) {
           return `${index * 100 * k}ms`
         },
@@ -362,12 +379,24 @@ header {
   background-color: #6aaa64 !important;
 }
 
+.nightMode .correct {
+  background-color: #577E47 !important;
+}
+
 .present {
   background-color: #c9b458 !important;
 }
 
+.nightMode .present {
+  background-color: #675B1F !important;
+}
+
 .absent {
   background-color: #787c7e !important;
+}
+
+.nightMode .absent {
+  background-color: #5C6466 !important;
 }
 
 .message {
@@ -386,6 +415,11 @@ header {
 
 .message.v-leave-to {
   opacity: 0;
+}
+
+.nightMode .key {
+  background-color: #2F3336;
+  color: white;
 }
 
 .d0 {
@@ -530,6 +564,13 @@ header {
 .tile.filled .front {
   border-color: #999;
 }
+.tile .front.nightMode {
+  border-color: #363B3E;
+  color: #DDD;
+}
+.tile.filled .front.nightMode {
+  border-color: #878C8F;
+}
 .tile .back {
   transform: rotateX(180deg);
 }
@@ -622,5 +663,9 @@ div.game-container {
   text-align: center;
   max-width: 500px;
   margin: 0px auto;
+}
+
+div.game-container.nightMode {
+  background-color: #1E2021;
 }
 </style>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueCookies from 'vue-cookies'
+import Switches from 'vue-switches'
 import App from './App.vue'
 import HomePage from './views/HomePage'
 import NotFound from './views/NotFound'
@@ -13,6 +14,7 @@ import { faEnvelope, faCog, faInfinity, faCalendar, faShare } from '@fortawesome
 
 Vue.use(VueRouter)
 Vue.use(VueCookies, { expire: '9999d' })
+Vue.use(Switches)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 library.add(faGithub)
