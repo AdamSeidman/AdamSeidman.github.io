@@ -114,7 +114,7 @@ export default {
               maxStreak: 0,
               practice_disallowSlang: false,
               practice_disallowCompanies: false,
-              practice_disallowPeople: false,
+              practice_disallowNames: false,
               practice_disallowGeneral: false,
               practice_disallowTechnical: false,
               settingsString: ''
