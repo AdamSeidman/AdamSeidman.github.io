@@ -390,7 +390,7 @@ header {
 }
 
 .nightMode .absent {
-  background-color: #5C6466 !important;
+  background-color: #2F3336 !important;
 }
 
 .message {
@@ -412,7 +412,7 @@ header {
 }
 
 .nightMode .key {
-  background-color: #2F3336;
+  background-color: #5C6466;
   color: white;
 }
 
