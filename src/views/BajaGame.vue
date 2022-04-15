@@ -166,18 +166,12 @@ export default {
           })
         }
         this.$cookies.set(COOKIE_KEY, this.cookie)
-        this.updateBodyColor()
+          this.$emit("setBkg", this.cookie.nightMode)
     },
     methods: {
         cookieChange() {
           this.$cookies.set(COOKIE_KEY, this.cookie)
-          this.updateBodyColor()
-        },
-        updateBodyColor() {
-          if (this.bodyNightMode !== this.cookie.nightMode) {
-            this.$emit("swapColors")
-            this.bodyNightMode = !this.bodyNightMode
-          }
+          this.$emit("setBkg", this.cookie.nightMode)
         },
         getDelayString(index, k) {
           return `${index * 100 * k}ms`

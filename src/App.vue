@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="nightMode && 'nightMode'">
     <media-bar v-if="notGameRoute"></media-bar>
-    <router-view @swapColors="swapColors"></router-view>
+    <router-view @setBkg="setBackground"></router-view>
     <nav-bar v-if="notGameRoute"></nav-bar>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   data () {
     return {
-      nightMode: false
+      nightMode: false,
     }
   },
   created () {
@@ -36,14 +36,17 @@ export default {
     } 
   },
   methods: {
-    swapColors() {
-      this.nightMode = !this.nightMode
+    setBackground(nightMode) {
+      this.nightMode = nightMode
     },
     handleResize () {
       let el = document.getElementById('app')
       el.className = ''
       el.classList.add(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || DEBUG ? 'mobile' : 'pc')
       el.classList.add(window.innerHeight > window.innerWidth ? 'portrait' : 'landscape')
+      if (this.nightMode) {
+        el.classList.add('nightMode')
+      }
     }
   }
 }
