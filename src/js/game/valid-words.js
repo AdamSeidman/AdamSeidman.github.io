@@ -33,10 +33,14 @@ function addToLists(customWordList, property) {
     });
 }
 
-addToLists(getWordList(true), "daily")
-addToLists(getWordList(false), "practice")
+var hasSetup = false
 
 function getValidWordList(isDaily, length) {
+    if (!hasSetup) {
+        addToLists(getWordList(true), "daily")
+        addToLists(getWordList(false), "practice")
+        hasSetup = true
+    }
     let property = "practice"
     if (isDaily) {
         property = "daily"

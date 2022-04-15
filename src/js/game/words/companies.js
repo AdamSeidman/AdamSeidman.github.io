@@ -1,5 +1,6 @@
 const COMPANIES = [
-    "briggs", "smidgens", "hilliard", "honda", "toyota", "cummins", "ansys", "kaiser", "mahany", "igus", "gleason", "magna"
+    "briggs", "smidgens", "hilliard", "honda", "toyota", "cummins", "ansys", "kaiser", "mahany", "igus", "gleason", "magna", "altair", "harris", "mastercam", "gleason",
+    "twmetals", "aurora", "koyo", "rstw", "polaris", "tekton", "sandvik", "niftybar", "wendys", "tacobell", "penske"
 ]
 
 export default COMPANIES;
