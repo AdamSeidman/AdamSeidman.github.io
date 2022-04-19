@@ -3,7 +3,8 @@
 
 const OVERRIDE_WORDS = {
     1: "trophy",
-    5: "gears"
+    5: "gears",
+    10: "penske"
 }
 
 export default OVERRIDE_WORDS;
