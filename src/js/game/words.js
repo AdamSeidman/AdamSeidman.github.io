@@ -14,11 +14,11 @@ function addWordList(wordList, blockFromDaily, blockFromPractice) {
     })
 }
 
-addWordList(COMPANIES)
-addWordList(GENERAL_WORDS)
+addWordList(COMPANIES, false)
+addWordList(GENERAL_WORDS, false)
 addWordList(PEOPLE, true)
-addWordList(SLANG)
-addWordList(TECHNICAL_WORDS)
+addWordList(SLANG, false)
+addWordList(TECHNICAL_WORDS, false)
 
 function getWordList(isDaily) {
     var array = []
