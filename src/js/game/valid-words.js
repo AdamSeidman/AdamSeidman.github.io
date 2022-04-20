@@ -30,7 +30,7 @@ function addToLists(customWordList, property) {
         if (!wordLists[property][(word.length).toString()].includes(word.toUpperCase())) {
             wordLists[property][(word.length).toString()].push(word.toUpperCase())
         }
-    });
+    })
 }
 
 var hasSetup = false

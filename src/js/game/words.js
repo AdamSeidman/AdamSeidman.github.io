@@ -3,7 +3,6 @@ import GENERAL_WORDS from "./words/general"
 import PEOPLE from "./words/people"
 import SLANG from "./words/slang"
 import TECHNICAL_WORDS from "./words/technical"
-
 var words = []
 
 function addWordList(wordList, blockFromDaily, blockFromPractice) {
@@ -14,14 +13,16 @@ function addWordList(wordList, blockFromDaily, blockFromPractice) {
     })
 }
 
-addWordList(COMPANIES, false)
-addWordList(GENERAL_WORDS, false)
-addWordList(PEOPLE, true)
-addWordList(SLANG, false)
-addWordList(TECHNICAL_WORDS, false)
+let cookie = window.$cookies.get("BAJADLE-COOKIE")
+
+addWordList(COMPANIES, false, cookie.practice_disallowCompanies)
+addWordList(GENERAL_WORDS, false, cookie.practice_disallowGeneral)
+addWordList(PEOPLE, true, cookie.practice_disallowNames)
+addWordList(SLANG, false, cookie.practice_disallowSlang)
+addWordList(TECHNICAL_WORDS, false, cookie.practice_disallowTechnical)
 
 function getWordList(isDaily) {
-    var array = []
+    var array = ["baja"]
     var property = "blockPractice"
     if (isDaily) {
         property = "blockDaily"

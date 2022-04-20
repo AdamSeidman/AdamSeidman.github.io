@@ -79,7 +79,7 @@ export default {
         closeModalIfOpen() {
             if (Date.now() - 50 > this.lastToggle && this.showSettings) {
                 this.toggleModal()
-                console.log("Doing gods work")
+                // TODO
             }
         },
         toggleModal() {
