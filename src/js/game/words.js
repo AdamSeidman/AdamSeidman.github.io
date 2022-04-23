@@ -15,6 +15,16 @@ function addWordList(wordList, blockFromDaily, blockFromPractice) {
 
 let cookie = window.$cookies.get("BAJADLE-COOKIE")
 
+if (cookie === null) {
+    cookie = {
+        practice_disallowCompanies: false,
+        practice_disallowGeneral: false,
+        practice_disallowNames: false,
+        practice_disallowTechnical: false,
+        practice_disallowSlang: false
+    }
+}
+
 addWordList(COMPANIES, false, cookie.practice_disallowCompanies)
 addWordList(GENERAL_WORDS, false, cookie.practice_disallowGeneral)
 addWordList(PEOPLE, true, cookie.practice_disallowNames)
