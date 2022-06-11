@@ -88,9 +88,9 @@ const projects = [
             '3D CSS', 'Github-Pages', 'Sass', 'Shell', 'VS Code', 'VueJS'
         ], 'vuejs'),
     new Project('Power Distribution Box', '',
-        'The box has three different generator inputs of varying sizes and provides several different 120v and 240v outputs. Each set of outputs were switched to set which generator was it\'s source. At any given time, the box is connected to several bench grinders, welders, etc.',
+        'The box has three different generator inputs of varying sizes and provides several different 120v and 240v outputs. Each set of outputs were switched to set which generator was it\'s source. At any given time, the box is connected to several grinders, welders, etc.',
         [
-            'American Wiring Standards', 'DIN Rail', 'Generators', 'NEMA'
+            'AC Power', 'Contactors', 'Generators', 'NEMA', 'Wiring'
         ], 'generator'),
     new Project('Stackable DAQ', 'https://github.com/AdamSeidman/SDAQ',
         'Leading a small team, I created a new Raspberry Pi-based data acquisition system to be used for RIT Baja. These new technologies will/are being used to replace most of the teams\' outdated hardware.',
