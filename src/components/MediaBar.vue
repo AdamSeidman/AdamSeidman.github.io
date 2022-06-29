@@ -6,7 +6,7 @@
     <a class="text-black" href="https://www.linkedin.com/in/adam-j-seidman/" target="_blank">
         <font-awesome-icon :icon="['fab', 'linkedin']" class="pointable nav-icon" />
     </a>
-    <a class="text-black" href="mailto:ajs1551@g.rit.edu">
+    <a class="text-black" href="mailto:AdamJSeidman@gmail.com">
         <font-awesome-icon :icon="['fa', 'envelope']" class="pointable nav-icon" />
     </a>
 </div>
@@ -16,6 +16,7 @@
 div.mediabar-container {
     position: absolute;
     height: 1px;
+    z-index: 99;
 }
 
 .nav-icon {
