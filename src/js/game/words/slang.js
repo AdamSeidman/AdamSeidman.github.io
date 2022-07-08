@@ -1,6 +1,6 @@
 const SLANG = [
-    "jamoke", "monster", "cigs", "equations", "wordle", "drip", "ranch", "funfact", "cranked", "alerts", "koolaid", "critter", "sendit", "nfts", "bajadle",
-    "bajablast", "kermit", "lynda", "choochin", "chooching", "dookie", "pipegang", "teamlunch"
+    "jamoke", "monster", "cigs",  "wordle", "drip", "ranch", "funfact", "cranked", "alerts", "koolaid", "critter", "sendit", "nfts", "bajadle",
+    "kermit", "lynda", "choochin", "chooching", "dookie", "pipegang"
 ]
 
 export default SLANG;

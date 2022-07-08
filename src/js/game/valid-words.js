@@ -4,24 +4,21 @@ import FIVE from "./dictionary/five"
 import SIX from "./dictionary/six"
 import SEVEN from "./dictionary/seven"
 import EIGHT from "./dictionary/eight"
-import NINE_A from "./dictionary/nine-a"
-import NINE_B from "./dictionary/nine-b"
 
 var validWords = {
     "4": FOUR,
     "5": FIVE,
     "6": SIX,
     "7": SEVEN,
-    "8": EIGHT,
-    "9": [...NINE_A, ...NINE_B]
+    "8": EIGHT
 }
 
 var wordLists = {
     daily: {
-        "4": [...validWords["4"]], "5": [...validWords["5"]], "6": [...validWords["6"]], "7": [...validWords["7"]], "8": [...validWords["8"]], "9": [...validWords["9"]]
+        "4": [...validWords["4"]], "5": [...validWords["5"]], "6": [...validWords["6"]], "7": [...validWords["7"]], "8": [...validWords["8"]]
     },
     practice: {
-        "4": [...validWords["4"]], "5": [...validWords["5"]], "6": [...validWords["6"]], "7": [...validWords["7"]], "8": [...validWords["8"]], "9": [...validWords["9"]]
+        "4": [...validWords["4"]], "5": [...validWords["5"]], "6": [...validWords["6"]], "7": [...validWords["7"]], "8": [...validWords["8"]]
     }
 }
 
