@@ -56,9 +56,6 @@ export default {
             names: true
         }
     },
-    created() {
-        //window.addEventListener("click", this.closeModalIfOpen) // todo: how???
-    },
     computed: {
         extension () {
             if (this.daily) {

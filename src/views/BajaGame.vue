@@ -76,7 +76,6 @@ import GameHeader from '../components/GameHeader'
 import random from '../js/game/random'
 import properties from '../js/game/game'
 import getValidWordList from '../js/game/valid-words'
-import OVERRIDE_WORDS from '../js/game/words/override-words'
 
 const LetterState = {
   CORRECT: {icon: '🟩', name: 'correct'},
@@ -125,9 +124,6 @@ export default {
     computed: {
         word() {
             let days = random.getDaysSinceStart().toString()
-            if (Object.keys(OVERRIDE_WORDS).includes(days) && this.daily) {
-              return OVERRIDE_WORDS[days]
-            }
             let wordList = getWordList(this.daily)
             let index = random.getTodaysIndex(wordList.length)
             if (!this.daily) {
