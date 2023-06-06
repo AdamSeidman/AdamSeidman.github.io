@@ -37,7 +37,7 @@ const projects = [
         [
             'Bluetooth', 'C++', 'Energia', 'Microcontrollers'
         ], 'bluetooth'),
-    new Project('Parallel Ray Tracer', '',
+    new Project('Parallel Ray Tracer', 'https://github.com/AdamSeidman/MPS-RayTracer',
         'The parallel ray tracer project was a half-semester long project for multiple processor systems. The program took variable numbers of processors and dynamically rendered an image using ray tracing.',
         [
             'Image Processing', 'MPI'
