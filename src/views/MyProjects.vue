@@ -70,8 +70,8 @@ export default {
 
         this.assignClasses();
 
-        document.getElementById("triangle-left").onclick = this.decrement;
-        document.getElementById("triangle-right").onclick = this.increment;
+        document.getElementById("triangle-left").onclick = this.increment;
+        document.getElementById("triangle-right").onclick = this.decrement;
     }
 }
 </script>
