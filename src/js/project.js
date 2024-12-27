@@ -18,9 +18,9 @@ class Project {
 
 const projects = [
     new Project('MR System Controller', '',
-        'Every year, RIT Baja builds a new vehicle while trying to stay innovative. In the last few years, we have developed an electronic shock absorber system. I designed a PCB and an enclosure for this project.',
+        'Every year, RIT Baja builds a new vehicle while trying to stay innovative. For several years, we had developed an electronic shock absorber system. I designed a PCB and an enclosure for this project.',
         [
-            'Arduino', 'C', 'KiCad', 'Python', 'SolidWorks'
+            'C', 'KiCad', 'Python', 'SolidWorks', 'Atmel'
         ], 'shock-absorber'),
     new Project('RIT Baja Website', 'https://www.rit.edu/clubs/baja/',
         'RIT Baja\'s previous website had a very old look to it. I collaborated on this project with one other student, and we went for a simple, modern one-page design.',
@@ -43,7 +43,7 @@ const projects = [
             'Image Processing', 'MPI'
         ], 'multi-cpu'),
     new Project('DSF Bot', 'https://github.com/AdamSeidman/DSF-Discord-Bot',
-        'DSF Bot is a Discord robot that has many commands to generate random, but obvious facts. The concept of this project may be funny, but the implementation is no joke!',
+        'DSF Bot is a Discord text bot that has many commands to generate random, but obvious facts. The concept of this project may be funny, but the implementation is no joke!',
         [
             'Discord.JS', 'NodeJS', 'ServeStatic', 'SQLite'
         ], 'dsf_logo'),
@@ -52,6 +52,11 @@ const projects = [
         [
             'Java', 'Matlab', 'Python'
         ], 'gear_pic'),
+    new Project('Song Chain Bot', 'https://top.gg/bot/1282445532559704219',
+        'Song Chain Bot is a Discord bot to play games with your friends where you attempt to connect spotify songs. It also includes leaderboards and stats.',
+        [
+            'Spotify API', 'Discord.JS', 'NodeJS', 'SQL'
+        ], 'song_chain_logo'),
     new Project('Line Following Robot', '',
         'This robot was the final project for my Introduction to Computer Engineering class. The robot had to navigate a maze and stop for any obstacles. It was even programmed to do a small dance at the end of the maze!',
         [
