@@ -1,6 +1,6 @@
 <template>
   <div id="keyboard">
-    <div class="row" v-for="(row, i) in this.rows" :key="row[0]">
+    <div class="row" v-for="(row, i) in rows" :key="row[0]">
       <div class="spacer" v-if="i===1"></div>
       <button
         v-for="key in row"
@@ -27,18 +27,17 @@
 </template>
 
 <script setup>
-export default {
-    props: ['letterStates'],
-    data () {
-        return {
-            rows: [
-              ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-              ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-              ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace']
-            ]
-        }
-    }
-}
+import { defineProps, reactive } from 'vue'
+
+const props = defineProps({
+  letterStates: Object
+})
+
+const rows = reactive([
+  ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+  ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace']
+])
 </script>
 
 <style scoped>

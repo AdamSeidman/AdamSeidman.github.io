@@ -50,125 +50,97 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$panel-background-color: lightgray;
-$lines-color:  white;
-$text-color: white;
-$line-positioning: 0.71rem;
-$title-font-size: 0.065em;
-$fade-in-time: 1.25s;
-
+<style>
 .sub-panel {
-    width: 77%;
-    left: 11.5%;
-    height: 79%;
-    top: 21%;
-    position: absolute;
-    border-top: 1px solid $lines-color;
-    opacity: 0;
-    transition: opacity ease-out 420ms;
+	 width: 77%;
+	 left: 11.5%;
+	 height: 79%;
+	 top: 21%;
+	 position: absolute;
+	 border-top: 1px solid white;
+	 opacity: 0;
+	 transition: opacity ease-out 420ms;
 }
-
-img.proj-img {
-    position: absolute;
-    width: 95%;
-    height: 95%;
-    margin: 2.5%;
-    animation: fadeIn $fade-in-time;
+ img.proj-img {
+	 position: absolute;
+	 width: 95%;
+	 height: 95%;
+	 margin: 2.5%;
+	 animation: fadeIn 1.25s;
 }
-
-div.panel {
-  opacity: 0;
-  background-color: $panel-background-color;
-
-  &.main, &.left, &.right, &.moreLeft, &.moreRight {
-    opacity: 1;
-    animation: appearSlowly 375ms;
-  }
-
-  &:not(.main):not(.right):not(.left):not(.moreLeft):not(.moreRight) {
-    animation: disappearQuickly 500ms;
-    opacity: 0;
-  }
-
+ div.panel {
+	 opacity: 0;
+	 background-color: lightgray;
 }
-
-.tech-used,
-.project-content,
-.panel-title {
-  opacity: 0;
-  height: 100%;
-  width: 100;
-  display: flex;
-  vertical-align: center;
-  justify-content: center;
-  font-size: $title-font-size;
-  color: $text-color;
+ div.panel.main, div.panel.left, div.panel.right, div.panel.moreLeft, div.panel.moreRight {
+	 opacity: 1;
+	 animation: appearSlowly 375ms;
 }
-
-.panel-title {
-    padding-top: 2%;
+ div.panel:not(.main):not(.right):not(.left):not(.moreLeft):not(.moreRight) {
+	 animation: disappearQuickly 500ms;
+	 opacity: 0;
 }
-
-.project-content {
-    font-size: $title-font-size / 1.5;
-    margin-top: 4.7%;
-    height: auto;
+ .tech-used, .project-content, .panel-title {
+	 opacity: 0;
+	 height: 100%;
+	 width: 100;
+	 display: flex;
+	 vertical-align: center;
+	 justify-content: center;
+	 font-size: 0.065em;
+	 color: white;
 }
-
-div.panel.main {
-  &#clickable {
-    cursor: pointer;
-  }
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: $line-positioning;
-    bottom: $line-positioning;
-    left: $line-positioning;
-    right: $line-positioning;
-    opacity: 1;
-    transition: transform ease-out 420ms;
-  }
-      
-  &::before {
-    border-top: 2px solid $lines-color;
-    border-bottom: 2px solid $lines-color;
-    transform: scale(0, 1);
-  }
-  &::after {
-    border-left: 2px solid $lines-color;
-    border-right: 2px solid $lines-color;
-    transform: scale(1, 0);
-  }
-  
-  &:hover {
-    background-color: #888888;
-    
-    img {
-        opacity: 0.5;
-        z-index: -1;
-    }
-
-    .sub-panel {
-        opacity: 1;
-    }
-
-    .project-content,
-    .panel-title {
-      opacity: 1;
-      text-shadow: 1px 1px #000a;
-      transition: all 420ms;
-    }
-    
-    &::before {
-      transform: scale(1.08, 1);
-    }
-    &::after {
-      transform: scale(1, 1.08);
-    }
-  }
+ .panel-title {
+	 padding-top: 2%;
 }
+ .project-content {
+	 font-size: 0.0433333333em;
+	 margin-top: 4.7%;
+	 height: auto;
+}
+ div.panel.main#clickable {
+	 cursor: pointer;
+}
+ div.panel.main::before, div.panel.main::after {
+	 content: '';
+	 position: absolute;
+	 top: 0.71rem;
+	 bottom: 0.71rem;
+	 left: 0.71rem;
+	 right: 0.71rem;
+	 opacity: 1;
+	 transition: transform ease-out 420ms;
+}
+ div.panel.main::before {
+	 border-top: 2px solid white;
+	 border-bottom: 2px solid white;
+	 transform: scale(0, 1);
+}
+ div.panel.main::after {
+	 border-left: 2px solid white;
+	 border-right: 2px solid white;
+	 transform: scale(1, 0);
+}
+ div.panel.main:hover {
+	 background-color: #888;
+}
+ div.panel.main:hover img {
+	 opacity: 0.5;
+	 z-index: -1;
+}
+ div.panel.main:hover .sub-panel {
+	 opacity: 1;
+}
+ div.panel.main:hover .project-content, div.panel.main:hover .panel-title {
+	 opacity: 1;
+	 text-shadow: 1px 1px #000 a;
+	 transition: all 420ms;
+}
+ div.panel.main:hover::before {
+	 transform: scale(1.08, 1);
+}
+ div.panel.main:hover::after {
+	 transform: scale(1, 1.08);
+}
+ 
 </style>

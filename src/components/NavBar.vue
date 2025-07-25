@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<style lang="scss">
+<style>
 a.resume {
     margin: 0px !important;
 }
