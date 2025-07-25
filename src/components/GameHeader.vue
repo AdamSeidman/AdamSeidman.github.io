@@ -10,19 +10,19 @@
             <hr>
             <span v-if="!daily">
                 <switches @input="emitProps" :emit-on-mount="false" v-model="generic" theme="bulma" color="default" />
-                <span class="switch-text">&nbsp;Allow Generic Terms</span><br>
+                <span class="switch-text">&nbsp;Allow {{ aText }}</span><br>
 
                 <switches @input="emitProps" :emit-on-mount="false" v-model="technical" theme="bulma" color="default" />
-                <span class="switch-text">&nbsp;Allow Car Parts/Systems</span><br>
+                <span class="switch-text">&nbsp;Allow {{ bText }}</span><br>
 
                 <switches @input="emitProps" :emit-on-mount="false" v-model="names" theme="bulma" color="default" />
-                <span class="switch-text">&nbsp;Allow Names/Nicknames</span><br>
+                <span class="switch-text">&nbsp;Allow {{ cText }}</span><br>
 
                 <switches @input="emitProps" :emit-on-mount="false" v-model="companies" theme="bulma" color="default" />
-                <span class="switch-text">&nbsp;Allow Companies/Sponsors</span><br>
+                <span class="switch-text">&nbsp;Allow {{ dText }}</span><br>
 
                 <switches @input="emitProps" :emit-on-mount="false" v-model="slang" theme="bulma" color="default" />
-                <span class="switch-text">&nbsp;Allow Baja Slang</span><br>
+                <span class="switch-text">&nbsp;Allow {{ eText }}</span><br>
                 <hr>
             </span>
             <span>
@@ -42,7 +42,13 @@ export default {
     },
     props: {
       daily: Boolean,
-      cookie: Object
+      cookie: Object,
+      baseExt: String,
+      aText: String,
+      bText: String,
+      cText: String,
+      dText: String,
+      eText: String
     },
     data() {
         return {
@@ -59,9 +65,9 @@ export default {
     computed: {
         extension () {
             if (this.daily) {
-                return 'game-infinite'
+                return `${this.baseExt}-infinite`
             }
-            return 'game'
+            return this.baseExt
         }
     },
     methods: {
@@ -76,7 +82,6 @@ export default {
         closeModalIfOpen() {
             if (Date.now() - 50 > this.lastToggle && this.showSettings) {
                 this.toggleModal()
-                // TODO
             }
         },
         toggleModal() {

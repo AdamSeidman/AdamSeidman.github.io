@@ -1,4 +1,5 @@
 import getWordList from "./words"
+import getGamesNightWords from "./gamesNightWords"
 import FOUR from "./dictionary/four"
 import FIVE from "./dictionary/five"
 import SIX from "./dictionary/six"
@@ -40,6 +41,8 @@ function getValidWordList(isDaily, length) {
     if (!hasSetup) {
         addToLists(getWordList(true), "daily")
         addToLists(getWordList(false), "practice")
+        addToLists(getGamesNightWords(true), "daily")
+        addToLists(getGamesNightWords(false), "practice")
         hasSetup = true
     }
     let property = "practice"

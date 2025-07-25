@@ -32,7 +32,8 @@ export default {
   },
   computed: {
     notGameRoute () {
-      return this.$route.name !== "game" && this.$route.name !== "bajadle" && this.$route.name !== "game-infinite"
+      return !(['game', 'game-infinite', 'bajadle', 'bajadle-infinite', 'gamesnightle', 'gamesnightle-infinite']
+        .includes(this.$route.name))
     } 
   },
   methods: {

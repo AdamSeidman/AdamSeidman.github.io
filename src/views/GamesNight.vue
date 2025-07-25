@@ -19,15 +19,15 @@
               <GameHeader
                 :daily="daily"
                 :cookie="this.cookie"
-                baseExt="bajadle"
-                aText="Generic Terms"
-                bText="Car Parts/Systems"
-                cText="Names/Nicknames"
-                dText="Companies/Sponsors"
-                eText="Baja Slang"
+                baseExt="gamesnightle"
+                aText="Skribbl List"
+                bText="Slurs"
+                cText="Names"
+                dText="Games"
+                eText="DSF Effects"
                 @change="this.cookieChange"
               >
-                RIT BAJA-DLE
+                GAMES NIGHT-LE
               </GameHeader>
             </h1>
         </header>
@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import getWordList from '../js/game/words'
+import getGamesNightWords from '../js/game/gamesNightWords'
 import Keyboard from '../components/Keyboard'
 import GameHeader from '../components/GameHeader'
 import random from '../js/game/random'
@@ -90,7 +90,7 @@ const LetterState = {
   INITIAL: {icon: null, name: 'initial'}
 }
 
-const COOKIE_KEY = "BAJADLE-COOKIE"
+const COOKIE_KEY = "GAMES-NIGHTLE-COOKIE"
 
 export default {
     components: {
@@ -129,7 +129,7 @@ export default {
     },
     computed: {
         word() {
-            let wordList = getWordList(this.daily)
+            let wordList = getGamesNightWords(this.daily)
             let index = random.getTodaysIndex(wordList.length)
             if (!this.daily) {
               index = random.getRandomIndex(wordList.length)
@@ -178,7 +178,7 @@ export default {
           return `${index * 100 * k}ms`
         },
         goToInfinite() {
-          window.location = "https://seidman-ad.am/bajadle-infinite"
+          window.location = "https://seidman-ad.am/gamesnightle-infinite"
         },
         showMessage(msg, time, showEndBlurb) {
             if (time === void 0) { time = 1000; }
@@ -314,11 +314,11 @@ export default {
           if (!this.success) {
             numTries = 'X'
           }
-          let typeBlurb = random.getDaysSinceStart()
+          let typeBlurb = `#${random.getDaysSinceStart() - 1202}`
           if (!this.daily) {
             typeBlurb = `Practice: ${this.word.toUpperCase()}`
           }
-          let grid = `RIT Baja-dle ${typeBlurb} ${numTries}/${this.numGuesses}\n`
+          let grid = `Games Night-le ${typeBlurb} ${numTries}/${this.numGuesses}\n`
           grid += this.board.slice(0, this.currentRowIndex + 1).map(row => {
             return row.map(tile => tile.state.icon).join('')
           }).join('\n')

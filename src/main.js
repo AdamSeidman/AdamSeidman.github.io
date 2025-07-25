@@ -11,6 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faCog, faInfinity, faCalendar, faShare } from '@fortawesome/free-solid-svg-icons'
+import GamesNight from './views/GamesNight.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueCookies, { expire: '9999d' })
@@ -50,15 +51,33 @@ const router = new VueRouter({
       props: {daily: true}
     },
     {
+      name: 'gamesnightle',
+      path: '/gamesnightle',
+      component: GamesNight,
+      props: {daily: true}
+    },
+    {
+      name: 'gamesnightle-infinite',
+      path: '/gamesnightle-infinite',
+      component: GamesNight,
+      props: {daily: false}
+    },
+    {
+      name: 'bajadle-infinite',
+      path: '/bajadle-infinite',
+      component: BajaGame,
+      props: {daily: false}
+    },
+    {
       name: 'game',
       path: '/game',
-      component: BajaGame,
+      component: GamesNight,
       props: {daily: true}
     },
     {
       name: 'game-infinite',
       path: '/game-infinite',
-      component: BajaGame,
+      component: GamesNight,
       props: {daily: false}
     },
     {
