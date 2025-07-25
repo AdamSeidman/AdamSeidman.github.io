@@ -27,13 +27,13 @@
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
+import { defineProps, ref } from 'vue'
 
 const props = defineProps({
   letterStates: Object
 })
 
-const rows = reactive([
+const rows = ref([
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
   ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace']

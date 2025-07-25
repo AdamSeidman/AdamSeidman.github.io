@@ -7,11 +7,11 @@ import HomePage from './views/HomePage'
 import NotFound from './views/NotFound'
 import MyProjects from './views/MyProjects'
 import BajaGame from './views/BajaGame'
+import GamesNight from './views/GamesNight'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faCog, faInfinity, faCalendar, faShare } from '@fortawesome/free-solid-svg-icons'
-import GamesNight from './views/GamesNight.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueCookies, { expire: '9999d' })
