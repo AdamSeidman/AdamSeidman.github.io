@@ -11,7 +11,7 @@
 <script>
 import response from '../js/about'
 
-const REDIRECT_PATHS = ['about', 'projects', 'game', 'bajadle', 'game-infinite']
+const REDIRECT_PATHS = ['about', 'projects', 'game', 'bajadle', 'game-infinite', 'bajadle-infinite', 'gamesnightle', 'gamesnightle-infinite']
 
 export default {
     mounted () {
