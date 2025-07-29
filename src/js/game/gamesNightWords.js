@@ -27,7 +27,7 @@ if (cookie === null) {
 
 addWordList(GAME_NAMES, false, cookie.practice_disallowCompanies)
 addWordList(SKRIBBL_WORDS, false, cookie.practice_disallowGeneral)
-addWordList(NAMES, true, cookie.practice_disallowNames)
+addWordList(NAMES, false, cookie.practice_disallowNames)
 addWordList(DSF_EFFECTS, false, cookie.practice_disallowSlang)
 addWordList(SLURS, false, cookie.practice_disallowTechnical)
 

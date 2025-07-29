@@ -24,8 +24,6 @@ var wordLists = {
 }
 
 function addToLists(customWordList, property) {
-    console.log(wordLists[property])
-    console.log("TODO REMOVE")
     customWordList.forEach(word => {
         if (word.length >= 4 && word.length <= 8) {
             if (!wordLists[property][(word.length).toString()].includes(word.toUpperCase())) {
