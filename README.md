@@ -20,4 +20,4 @@ npm run serve
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).  
 
-Click [here](https://seidman-ad.am/) to go to the website!
+Click [here](https://adamseidman.com/) to go to the website!

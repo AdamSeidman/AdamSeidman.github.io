@@ -178,7 +178,7 @@ export default {
           return `${index * 100 * k}ms`
         },
         goToInfinite() {
-          window.location = "https://seidman-ad.am/gamesnightle-infinite"
+          window.location = "https://adamseidman.com/gamesnightle-infinite"
         },
         showMessage(msg, time, showEndBlurb) {
             if (time === void 0) { time = 1000; }

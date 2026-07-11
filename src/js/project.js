@@ -72,7 +72,7 @@ const projects = [
         [
             '3D Printing', 'Machining', 'SolidWorks'
         ], 'shifter'),
-    new Project('Baja Wordle', 'https://seidman-ad.am/bajadle',
+    new Project('Baja Wordle', 'https://adamseidman.com/bajadle',
         'Better know as "RIT Baja-dle", I jumped on the wordle craze and made a vue app for this website using only RIT Baja terms. It has both daily and infinite versions. I also implemented cookies for settings.',
         [
             'JavaScript', 'Vue-Cookies', 'VueJS'

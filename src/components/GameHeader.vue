@@ -92,7 +92,7 @@ export default {
             }
         },
         setWindow() {
-            window.location = "https://seidman-ad.am/" + this.extension
+            window.location = "https://adamseidman.com/" + this.extension
         },
         emitProps() {
             this.$set(this.cookie, 'nightMode', this.nightMode)
